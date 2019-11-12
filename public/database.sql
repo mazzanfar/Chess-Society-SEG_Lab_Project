@@ -9,9 +9,12 @@ CREATE TABLE users (
 
 CREATE TABLE event(
       id INTEGER PRIMARY KEY AUTO_INCREMENT,
+      name VARCHAR(255) NOT NULL,
+      description TEXT NOT NULL,
       time DATETIME NOT NULL,
       location VARCHAR(255) NOT NULL,
       expires DATETIME
 );
 
-INSERT into event(time, location, expires) VALUES ('2015-11-05 14:29:36', 'House', '2018-11-05 14:29:36')
+INSERT into event(name, event.description, time, location, expires) VALUES ('Meet and greet', 'Small meet and greet for society members',
+                                                                            '2015-11-05 14:29:36', 'House', '2018-11-05 14:29:36');
