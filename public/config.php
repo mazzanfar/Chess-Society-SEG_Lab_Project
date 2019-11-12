@@ -1,6 +1,6 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+
+//require("../");
 
 /*
 CREATE TABLE users (
@@ -16,16 +16,23 @@ CREATE TABLE users (
     -> );
  */
 
+define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT']);
+define('PRIVATE_DIR', SERVER_ROOT . "/private");
+//include(PRIVATE_DIR . "/db_functions.php");
+
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'chess_society_db');
- 
+define('DB_USERNAME', 'user');
+define('DB_PASSWORD', 'password');
+define('DB_NAME', 'db');
+
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
+
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
+//require_once "../private/db_functions.php";
+
 ?>
