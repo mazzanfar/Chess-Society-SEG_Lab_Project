@@ -13,6 +13,7 @@ CREATE TABLE event(
       description TEXT NOT NULL,
       time DATETIME NOT NULL,
       location VARCHAR(255) NOT NULL,
+      available_from DATETIME,
       expires DATETIME
 );
 

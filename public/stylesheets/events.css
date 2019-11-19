@@ -1,0 +1,23 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+
+#events {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.event {
+    border: #333333 solid 1px;
+    border-radius: 25px;
+    padding: 1.2rem;
+}
+
+.event-information {
+    font-size: smaller;
+}
+
+h2 {
+    margin-bottom: 0;
+}
