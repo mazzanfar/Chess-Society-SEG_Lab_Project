@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 function redirect_to($path) {
     header("Location: " . "/public/" . $path);
 }
