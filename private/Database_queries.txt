@@ -1,0 +1,148 @@
+
+#member signup
+INSERT INTO MEMBER (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, MEMBER_ADDRESS, PHONE_NUMBER, GENDER, DOB)
+VALUES
+("john","john", "john","smith","56 kingsway","07846485678","male",1990-05-07),
+("amine","amine","amine","smith","56 queensway","07846485378","male",1990-05-09);
+
+
+
+#member info
+SELECT * FROM MEMBER WHERE ID=1;
+
+
+
+#update member info
+UPDATE MEMBER
+SET FIRST_NAME = "josephine"
+WHERE ID =1;
+
+UPDATE MEMBER
+SET LAST_NAME = "scott"
+WHERE ID =1;
+
+UPDATE MEMBER
+SET MEMBER_ADDRESS = "57 kingsway"
+WHERE ID =1;
+
+UPDATE MEMBER
+SET PHONE_NUMBER = "07567835708"
+WHERE ID =1;
+
+UPDATE MEMBER
+SET GENDER = "female"
+WHERE ID =1;
+
+UPDATE MEMBER
+SET DOB = 1990-05-08
+WHERE ID =1;
+
+
+#remove member
+DELETE FROM MEMBER WHERE ID=1;
+
+
+#news info
+SELECT * FROM NEWS;
+
+#create news
+INSERT INTO NEWS (INFO, RELEASE, EXPIRY)
+VALUES("Magnus Carlsen is the world champion","2018-01-01 12:00" , "2019-12-30 12:00");
+
+#edit news
+UPDATE NEWS
+SET INFO="Magnus Carlsen is the chess world champion"
+WHERE NEWS_ID = 1;
+
+#edit news time
+UPDATE NEWS
+SET RELEASE="2018-01-01 12:01"
+WHERE NEWS_ID = 1;
+
+#DELETE NEWS
+DELETE FROM NEWS WHERE ID=1;
+
+
+
+#EVENTS info
+SELECT * FROM EVENTS;
+
+#create events
+INSERT INTO EVENTS (NAME, TIME, LOCATION, INFO, RELEASE, EXPIRY)
+VALUES("first meeting", "2019-12-01 12:00","Bush House", "Meeting at bush house","2018-01-01 12:00" , "2019-12-30 12:00");
+
+#edit events
+UPDATE EVENTS
+SET INFO="Meeting at strand"
+WHERE EVENTS_ID = 1;
+#edit events time
+UPDATE EVENTS
+SET RELEASE="2018-01-01 12:00"
+WHERE EVENTS_ID = 1;
+
+#DELETE events
+DELETE FROM EVENTS WHERE ID=1;
+
+
+#create officer
+INSERT INTO OFFICER (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, MEMBER_ADDRESS, PHONE_NUMBER, GENDER, DOB)
+VALUES("johne", "johne", "johne","smith","56 kingsway","07846485678","male",1990-05-07);
+
+
+#create a tournament
+INSERT INTO TOURNAMENT (INFO, RELEASE, EXPIRY, ORGANIZER_ID)
+VALUES ("First tournament", "2019-11-18 12:00" , "2019-12-30 12:00", 1);
+
+#edit a tournament
+#you have to check if the user is the organizer
+UPDATE TOURNAMENT
+SET EXPIRY="2019-12-31 12:00"
+WHERE TOURNAMENT_ID = 1;
+
+#DELETE TOURNAMENT
+#also have to check if he's the organnizer
+DELETE FROM TOURNAMENT WHERE TOURNAMENT_ID=1;
+
+#create officer
+INSERT INTO OFFICER (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, MEMBER_ADDRESS, PHONE_NUMBER, GENDER, DOB)
+VALUES("george", "george", "george","smith","56 kingsway","07846485678","male",1991-05-07);
+
+
+#ADD A CO-ORGANIZER
+#also have to check if he's the organnizer
+INSERT INTO TOURNAMENT_CO_ORGANIZER(TOURNAMENT_ID, CO_ORGANIZER_ID)
+VALUES (1, 2);
+
+
+#ADD A CO-ORGANIZER
+#also have to check if he's the organnizer
+DELETE FROM TOURNAMENT_CO_ORGANIZER WHERE CO_ORGANIZER_ID=1;
+
+
+#sign up for a tournament
+#CHECK IF THE DEADLINE IS NOT DUE
+INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID)
+VALUES (1,1),
+    (1,2);
+
+
+#get the list of participant to a tournament
+SELECT PARTICIPANT_ID FROM TOURNAMENT_PARTICIPANT WHERE TOURNAMENT_ID=1;
+
+
+#create a match
+INSERT INTO MATCHS(TOURNAMENT_ID)
+VALUES (1);
+
+
+#record the score
+INSERT INTO MATCHS_PARTICIPANT (MATCHS_ID, PARTICIPANT_ID, SCORE)
+VALUES (1,1,1),
+(1,2,0);
+
+
+#check which tournament the user participated in
+SELECT TOURNAMENT_ID FROM TOURNAMENT_PARTICIPANT WHERE PARTICIPANT_ID = 1;
+
+#check which MATCH the user participated in
+SELECT TOURNAMENT_ID, MATCHS_ID FROM MATCHS_PARTICIPANT WHERE PARTICIPANT_ID = 1;
