@@ -1,7 +1,8 @@
 <?php
-// Include config file
-require_once "config.php";
- 
+require_once("../private/initialise.php");
+
+include("../private/shared/chess_header.php");
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
@@ -133,3 +134,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>    
 </body>
 </html>
+
+<?php include("../private/shared/chess_footer.php"); ?>
