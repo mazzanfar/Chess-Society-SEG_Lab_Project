@@ -1,4 +1,10 @@
 <?php
+require_once("../private/initialise.php");
+
+include("../private/shared/chess_header.php");
+
+?>
+<?php
 // Initialize the session
 session_start();
  
@@ -29,3 +35,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </p>
 </body>
 </html>
+
+<?php include("../private/shared/chess_footer.php"); ?>

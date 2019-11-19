@@ -1,4 +1,10 @@
 <?php
+require_once("../private/initialise.php");
+
+include("../private/shared/chess_header.php");
+
+?>
+<?php
 // Initialize the session
 session_start();
  
@@ -7,9 +13,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
- 
-// Include config file
-require_once "config.php";
+
  
 // Define variables and initialize with empty values
 $new_password = $confirm_password = "";
@@ -104,3 +108,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>    
 </body>
 </html>
+
+<?php include("../private/shared/chess_footer.php"); ?>
