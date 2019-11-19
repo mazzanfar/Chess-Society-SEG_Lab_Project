@@ -1,4 +1,9 @@
+<?php
+require_once("../private/initialise.php");
 
+include("../private/shared/chess_header.php");
+
+?>
 <!doctype html>
 
 <html lang="en">
@@ -50,3 +55,5 @@
 
   </body>
 </html>
+
+<?php include("../private/shared/chess_footer.php"); ?>

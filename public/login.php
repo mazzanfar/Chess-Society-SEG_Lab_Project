@@ -1,4 +1,8 @@
 <?php
+require_once("../private/initialise.php");
+
+include("../private/shared/chess_header.php");
+
 // Initialize the session
 session_start();
  
@@ -7,9 +11,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: welcome.php");
     exit;
 }
- 
-// Include config file
-require_once "config.php";
+
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -122,3 +124,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>    
 </body>
 </html>
+
+<?php include("../private/shared/chess_footer.php"); ?>
