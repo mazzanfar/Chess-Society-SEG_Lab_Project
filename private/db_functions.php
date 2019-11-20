@@ -37,6 +37,15 @@ function delete_event($id) {
     return mysqli_query($link, $query);
 }
 
+function delete_user($id) {
+    global $link;
+    $sql = "DELETE FROM MEMBER";
+    $sql .= "WHERE id='" . db_escape($link, $id) . '";
+    $sql .= "LIMIT 1";
+    
+    return mysqli_query($link, $sql);
+}
+
 function create_event($event) {
     global $link;
     $query = "INSERT event(name, description, location, time, available_from expires) VALUE (" .
