@@ -40,15 +40,31 @@ function delete_event($id) {
 function delete_user($id) {
     global $link;
     $sql = "DELETE FROM MEMBER";
-    $sql .= "WHERE id='" . db_escape($link, $id) . '";
+    $sql .= " WHERE id='" . db_escape($link, $id) . '"';
     $sql .= "LIMIT 1";
     
     return mysqli_query($link, $sql);
 }
 
+function get_members() {
+    global $link;
+    $sql = "SELECT * FROM MEMBER";
+
+    return mysqli_query($link, $sql);
+}
+
+function get_member_by_id($id) {
+    global $link;
+    $sql = "SELECT * FROM MEMBER" .
+        " WHERE MEMBER_ID = '" . $id . "'";
+
+    return mysqli_query($link, $sql);
+}
+
+
 function create_event($event) {
     global $link;
-    $query = "INSERT event(name, description, location, time, available_from expires) VALUE (" .
+    $query = "INSERT event(name, description, location, time, available_from, expires) VALUE (" .
         "'" . $event['name'] . "', " .
         "'" . $event['description'] . "', " .
         "'" . $event['location'] . "', " .

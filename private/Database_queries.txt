@@ -2,8 +2,8 @@
 #member signup
 INSERT INTO MEMBER (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, MEMBER_ADDRESS, PHONE_NUMBER, GENDER, DOB)
 VALUES
-("john","john", "john","smith","56 kingsway","07846485678","male",1990-05-07),
-("amine","amine","amine","smith","56 queensway","07846485378","male",1990-05-09);
+("john","john", "john","smith","56 kingsway","07846485678","male", '1990-05-07'),
+("amine","amine","amine","smith","56 queensway","07846485378","male", '1990-05-'09);
 
 
 
