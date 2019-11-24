@@ -11,7 +11,7 @@ mysqli_close($link);
 
 <html>
 <head>
-    <title>Chess society events</title>
+    <title>Chess society users</title>
 </head>
 <body>
     <h1><?php echo "Member id '" . $member['MEMBER_ID'] ."' profile" ?></h1>
