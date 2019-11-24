@@ -53,6 +53,54 @@ function get_members() {
     return mysqli_query($link, $sql);
 }
 
+function get_tournaments() {
+    global $link;
+    $sql = "SELECT * FROM TOURNAMENT";
+
+    return mysqli_query($link, $sql);
+}
+
+function get_tournament_by_id($id) {
+    global $link;
+    $sql = "SELECT * FROM TOURNAMENT" .
+        " WHERE TOURNAMENT_ID = '" . $id . "'";
+
+    return mysqli_query($link, $sql);
+}
+
+function get_tournament_cooragnizers($id) {
+    global $link;
+    $sql = "SELECT * FROM TOURNAMENT_CO_ORGANIZER" .
+        " WHERE TOURNAMENT_ID = '" . $id . "'";
+
+    return mysqli_query($link, $sql);
+}
+
+function delete_co_organizer($tournament_id, $co_organizer_id) {
+    global $link;
+    $query = "DELETE FROM TOURNAMENT_CO_ORGANIZER " .
+        " WHERE TOURNAMENT_ID = '" . $tournament_id . "'" .
+        " AND CO_ORGANIZER_ID = '" . $co_organizer_id . "'" .
+        " LIMIT 1";
+
+    return mysqli_query($link, $query);
+}
+
+function get_officers() {
+    global $link;
+    $sql = "SELECT * FROM OFFICER";
+
+    return mysqli_query($link, $sql);
+}
+
+function add_tournament_co_organizer($tournament_id, $co_organizer_id) {
+    global $link;
+    $sql = "INSERT INTO TOURNAMENT_CO_ORGANIZER(TOURNAMENT_ID, CO_ORGANIZER_ID)" .
+        " VALUES (" . $tournament_id . ", " . $co_organizer_id . ")";
+
+    return mysqli_query($link, $sql);
+}
+
 function get_member_by_id($id) {
     global $link;
     $sql = "SELECT * FROM MEMBER" .
