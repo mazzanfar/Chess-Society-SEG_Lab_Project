@@ -1,7 +1,7 @@
 <?php
-require_once("../private/initialise.php");
+require_once("../../private/initialise.php");
 
-include("../private/shared/chess_header.php");
+include("../../private/shared/chess_header.php");
 
 // Initialize the session
 session_start();
@@ -125,4 +125,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </body>
 </html>
 
-<?php include("../private/shared/chess_footer.php"); ?>
+<?php include("../../private/shared/chess_footer.php"); ?>
