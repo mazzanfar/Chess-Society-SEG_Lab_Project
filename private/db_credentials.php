@@ -1,8 +1,8 @@
 <?php
 
 define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'] );
-define('PRIVATE_DIR', SERVER_ROOT . "/private");
-define('PUBLIC_DIR', SERVER_ROOT . "/public");
+define('PRIVATE_DIR', SERVER_ROOT . "/projects/SEG_Lab_Project/private");
+define('PUBLIC_DIR', SERVER_ROOT . "/projects/SEG_Lab_Project/public");
 require(PRIVATE_DIR . "/db_functions.php");
 
 define('DB_SERVER', 'localhost');

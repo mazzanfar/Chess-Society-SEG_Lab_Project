@@ -58,4 +58,51 @@ function create_event($event) {
         "')";
     return mysqli_query($link, $query);
 }
+
+
+
+
+
+function get_news($options = []) {
+    global $link;
+    $query = "SELECT * FROM NEWS";
+    if (isset($options['date'])) {
+        $date = $options['date'];
+        $query = $query . " WHERE THERELEASE < '" . $date .
+        "' AND EXPIRY > '" . $date . "'";
+    }
+    return mysqli_query($link, $query);
+}
+function get_news_by_id($NEWS_ID) {
+    global $link;
+    $query = "SELECT * FROM NEWS WHERE NEWS_ID=" . $NEWS_ID;
+    return mysqli_query($link, $query);
+}
+function update_news($NEWS) {
+    global $link;
+    $query = "UPDATE NEWS SET " .
+    " INFO = '" . $NEWS['INFO'] . "'," .
+    " THERELEASE = '" . $NEWS['THERELEASE'] . "'," .
+    " EXPIRY = '" . $NEWS['EXPIRY'] . "'" .
+    " WHERE NEWS_ID='" . $NEWS['NEWS_ID'] . "'";
+    return mysqli_query($link, $query);
+}
+function delete_news($NEWS_ID) {
+    global $link;
+    $query = "DELETE FROM NEWS " .
+        " WHERE NEWS_ID = '" . $NEWS_ID . "'" .
+        " LIMIT 1";
+    return mysqli_query($link, $query);
+}
+
+
+function create_event($NEWS) {
+    global $link;
+    $query = "INSERT event(INFO, THERELEASE, EXPIRY) VALUE (" .
+        "'" . $event['INFO'] . "', " .
+        "'" . $event['THERELEASE'] . "', " .
+        "'" . $event['EXPIRY'] .
+        "')";
+    return mysqli_query($link, $query);
+}
 ?>
