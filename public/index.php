@@ -39,19 +39,12 @@ include("../private/shared/chess_header.php");
     <div id="events">
         <a href="events/index.php">EVENTS</a>
     </div>
-
-  <news class="column news">
-    
-    <h3>News</h3>
-    
-    <p>
-    
-    MAJOR EVENT HAPPENING NEXT WEEK 
-        
-    </p>
-    
-    
-  </news>
+    <div id="news">
+        <a href="news/index.php">NEWS</a>
+    </div>
+    <div id="tournaments">
+        <a href="tournaments/index.php">TOURNAMENTS</a>
+    </div>
 
   </body>
 </html>
