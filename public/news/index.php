@@ -19,7 +19,7 @@ require_once "../../private/initialise.php";
     // TODO: only use date option when not logged in as admine
     $result_set = get_news(["date" => $date]);
     if (mysqli_num_rows($result_set)) {
-        while ($news = mysqli_fetch_assoc($result_set)) {
+        while ($NEWS = mysqli_fetch_assoc($result_set)) {
             echo "<div class='NEWS'>
                 <p>" . $NEWS["INFO"] . "</p>
                 <!--only show these if logged in as an administrator-->
