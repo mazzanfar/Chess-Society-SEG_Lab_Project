@@ -16,7 +16,7 @@
    <head><title>Remove Account</title></head>
    <body>
     <a href="">Cancel</a>
-    <h3>Delete Account?</h1>
+    <h3>Delete Account?</h3>
     <form method="post">
         <label><input type="radio" name="delete" value="Yes">Yes</label><br>
         <label><input type="radio" name="delete" value="No">No</label><br>
