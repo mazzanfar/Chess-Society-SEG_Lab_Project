@@ -1,6 +1,3 @@
-<html>
-   <head><title>Remove Account</title></head>
-   <body>
 <?php
     require_once "../private/initialise.php";
     if(is_post_request()) {
@@ -9,13 +6,17 @@
             $id = $_POST['id'];
             delete_user($id);
         }
-        redirect_to("index.php");
+        redirect_to(url_for("index.php"));
     } else {
-        echo "Error when deleting account"
+        echo "Error when deleting account";
     }
 ?>
+
+<html>
+   <head><title>Remove Account</title></head>
+   <body>
     <a href="">Cancel</a>
-    <h3>Delete Account?</h1>
+    <h3>Delete Account?</h3>
     <form method="post">
         <label><input type="radio" name="delete" value="Yes">Yes</label><br>
         <label><input type="radio" name="delete" value="No">No</label><br>
