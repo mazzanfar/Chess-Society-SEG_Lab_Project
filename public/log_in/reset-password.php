@@ -1,7 +1,7 @@
 <?php
-require_once("../private/initialise.php");
+require_once("../../private/initialise.php");
 
-include("../private/shared/chess_header.php");
+include("../../private/shared/chess_header.php");
 
 ?>
 <?php
@@ -102,11 +102,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="welcome.php">Cancel</a>
+                <a class="btn btn-link" href="../welcome.php">Cancel</a>
             </div>
         </form>
     </div>    
 </body>
 </html>
 
-<?php include("../private/shared/chess_footer.php"); ?>
+<?php include("../../private/shared/chess_footer.php"); ?>

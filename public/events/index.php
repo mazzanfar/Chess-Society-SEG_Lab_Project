@@ -1,5 +1,5 @@
 <?php
-require_once "/../../private/initialise.php";
+require_once "../../private/initialise.php";
 ?>
 
 <html>
@@ -9,6 +9,8 @@ require_once "/../../private/initialise.php";
 </head>
 <body>
 <h1>Chess society events</h1>
+<a href="../">Back to home page</a>
+<br/>
 <a href="new.php">Create new event</a> <!-- only show this for admins -->
 
 <div id="events">
