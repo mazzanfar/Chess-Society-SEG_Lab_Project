@@ -6,9 +6,9 @@ define('PUBLIC_DIR', SERVER_ROOT . "/projects/SEG_Lab_Project/public");
 require("db_functions.php");
 
 define('DB_SERVER', 'localhost');
-define('DB_USER', 'user');
-define('DB_PASS', 'password');
-define('DB_NAME', 'db');
+define('DB_USER', 'root');
+define('DB_PASS', null);
+define('DB_NAME', 'chess_society_db');
 
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
