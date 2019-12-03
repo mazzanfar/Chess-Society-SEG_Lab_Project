@@ -90,8 +90,8 @@ VALUES("johne", "johne", "johne","smith","56 kingsway","07846485678","male",'199
 
 
 #create a tournament
-INSERT INTO TOURNAMENT (INFO, SIGNUP_DEADLINE, ORGANIZER_ID)
-VALUES ("First tournament", "2019-11-18 12:00", '1');
+INSERT INTO TOURNAMENT (NAME, INFO, SIGNUP_DEADLINE, ORGANIZER_ID)
+VALUES ("First tournament", "The chess society's first tournament", "2019-11-18 12:00", '1');
 
 #edit a tournament
 #you have to check if the user is the organizer

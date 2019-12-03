@@ -9,7 +9,7 @@ if(is_post_request()) {
     edit_tournament($tournament);
     redirect_to("tournaments/index.php");
 } else {
-    $tournament_id = $_GET['tournament_id'] ?? 1;
+    $tournament_id = $_GET['id'] ?? 1;
     $result_set = get_tournament_by_id($tournament_id);
     $tournament = mysqli_fetch_assoc($result_set);
     mysqli_free_result($result_set);

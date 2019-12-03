@@ -1,6 +1,12 @@
 <?php
 require_once "../../private/initialise.php";
 $_SESSION['id'] = '1';
+
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["is_officer"] === true){
+        echo "<a href='new.php'>Create new news</a>"; // only show this for officers
+}
+
 ?>
 
     <html>
@@ -19,6 +25,7 @@ $_SESSION['id'] = '1';
         if (mysqli_num_rows($result_set)) {
             while ($tournament = mysqli_fetch_assoc($result_set)) {
                 echo "<div class='event'>
+                <p>" . $tournament["NAME"] . "</p>
                 <p>" . $tournament["INFO"] . "</p>
                 <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
 
@@ -35,8 +42,8 @@ $_SESSION['id'] = '1';
                           </form>";
                 }
 
-                echo "<a href='./edit.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
-                <a href='./delete.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a>
+                echo "<a href='./edit_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
+                <a href='./delete_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a>
                 </div>";
             }
         } else {
