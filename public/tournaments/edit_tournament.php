@@ -8,7 +8,7 @@ if(is_post_request()) {
     $tournament['deadline'] = $_POST['deadline'];
     $tournament['organizer'] = $_POST['organizer'];
     edit_tournament($tournament);
-    //redirect_to("tournaments/index.php");
+    redirect_to("tournaments/index.php");
 } else {
     $tournament_id = $_GET['id'] ?? 1;
     $result_set = get_tournament_by_id($tournament_id);

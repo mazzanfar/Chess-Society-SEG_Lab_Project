@@ -146,7 +146,6 @@ function edit_tournament($tournament) {
     $sql .= "WHERE TOURNAMENT_ID='" . $tournament['tournament_id'] . "' ";
     $sql .= "LIMIT 1";
 
-    echo $sql;
     return mysqli_query($link, $sql);
 }
 
