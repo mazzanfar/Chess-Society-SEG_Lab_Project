@@ -159,5 +159,37 @@ function delete_news($NEWS_ID) {
     return mysqli_query($link, $query);
 }
 
+function get_tournament_participants($id) {
+    global $link;
+    $query = "SELECT PARTICIPANT_ID FROM TOURNAMENT_PARTICIPANT WHERE TOURNAMENT_ID='" . $id . "'";
+    $result_set = mysqli_query($link, $query);
+    $participants = [];
+
+    while($row = mysqli_fetch_assoc($result_set)) {
+        $participants[] = $row['PARTICIPANT_ID'];
+    }
+
+    return $participants;
+}
+
+function get_tournaments_participated_in($id) {
+    global $link;
+    $query = "SELECT TOURNAMENT_ID FROM TOURNAMENT_PARTICIPANT WHERE PARTICIPANT_ID='" . $id . "'";
+    $result_set = mysqli_query($link, $query);
+    $tournaments = [];
+
+    while($row = mysqli_fetch_assoc($result_set)) {
+        $tournaments[] = $row['TOURNAMENT_ID'];
+    }
+
+    return $tournaments;
+}
+
+function insert_tournament_participant($tournament_id, $participant_id) {
+    global $link;
+    $query = "INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID) VALUE (" .
+            $tournament_id . ", " . $participant_id . ")";
+    return mysqli_query($link, $query);
+}
 
 ?>

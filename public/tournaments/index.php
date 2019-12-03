@@ -1,6 +1,6 @@
 <?php
 require_once "../../private/initialise.php";
-$_SESSION['id'] = '1';
+$_SESSION['id'] = '1000';
 ?>
 
     <html>
@@ -26,12 +26,22 @@ $_SESSION['id'] = '1';
                     echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
                 }
 
+
+                if (!in_array($_SESSION['id'], get_tournament_participants($tournament['TOURNAMENT_ID'])) &&
+                    new DateTime() < new DateTime($tournament['SIGNUP_DEADLINE'])) {
+                    echo "<form action='signup.php'>
+                            <input type='text' name='participant_id' hidden value='" . $_SESSION['id'] . "'/>
+                            <input type='text' name='tournament_id' hidden value='" . $tournament['TOURNAMENT_ID'] . "'/>
+                            <input type='submit' value='Sign up'/>
+                          </form>";
+                }
+
                 echo "<a href='./edit.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
                 <a href='./delete.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a>
                 </div>";
             }
         } else {
-            echo "<p>The chess society currently has no upcoming events </p>";
+            echo "<p>The chess society currently has no upcoming tournaments </p>";
         }
         ?>
     </div>

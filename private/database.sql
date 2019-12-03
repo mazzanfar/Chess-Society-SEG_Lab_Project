@@ -82,6 +82,13 @@ CREATE TABLE TOURNAMENT_CO_ORGANIZER(
     FOREIGN KEY (CO_ORGANIZER_ID) REFERENCES OFFICER(OFFICER_ID)
 );
 
+CREATE TABLE TOURNAMENT_PARTICIPANT (
+                                    TOURNAMENT_ID INT NOT NULL,
+                                    PARTICIPANT_ID INT NOT NULL,
+                                    FOREIGN KEY (TOURNAMENT_ID) REFERENCES TOURNAMENT(TOURNAMENT_ID),
+                                    FOREIGN KEY (PARTICIPANT_ID) REFERENCES MEMBER(MEMBER_ID)
+);
+
 INSERT INTO NEWS(INFO, THERELEASE, EXPIRY) VALUES ('Magnus Carlsen increased his lead even more at the Tata Steel Chess India Rapid & Blitz.',
                                                                             '2015-11-05 12:10', '2020-10-17 13:30');
 
