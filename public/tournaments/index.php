@@ -6,7 +6,7 @@ $_SESSION['id'] = '1';
     <html>
     <head>
         <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
-        <title>Chess society tournaments</title>
+        <title>Chess Society Tournaments</title>
     </head>
     <body>
     <h1>Chess society tournaments</h1>
@@ -19,19 +19,19 @@ $_SESSION['id'] = '1';
         if (mysqli_num_rows($result_set)) {
             while ($tournament = mysqli_fetch_assoc($result_set)) {
                 echo "<div class='event'>
-                <p>" . $tournament["INFO"] . "</p>
-                <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
+                <p>" . $tournament['info'] . "</p>
+                <p>Signup deadline: " . $tournament['deadline'] . "</p>";
 
-                if ($_SESSION["id"] === $tournament["ORGANIZER_ID"]) {
-                    echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
+                if ($_SESSION['id'] === $tournament['organizer']) {
+                    echo "<a href='./co_organizer.php?id=" . $tournament['tournament_id'] . "'>Edit co-organizers</a><br/>";
                 }
 
-                echo "<a href='./edit.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
-                <a href='./delete.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a>
+                echo "<a href='./edit_tournament.php?id=" . $tournament['tournament_id'] . "'>Edit</a>
+                <a href='./delete_tournament.php?id=" . $tournament['tournament_id'] . "'>Delete</a>
                 </div>";
             }
         } else {
-            echo "<p>The chess society currently has no upcoming events </p>";
+            echo "<p>The chess society currently has no upcoming tournaments</p>";
         }
         ?>
     </div>
