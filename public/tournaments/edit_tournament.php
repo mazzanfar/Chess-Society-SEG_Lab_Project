@@ -3,6 +3,7 @@ require_once "../../private/initialise.php";
 
 if(is_post_request()) {
     $tournament['tournament_id'] = $_POST['tournament_id'];
+    $tournament['name'] = $_POST['name'];
     $tournament['info'] = $_POST['info'];
     $tournament['deadline'] = $_POST['deadline'];
     $tournament['organizer'] = $_POST['organizer'];
@@ -22,24 +23,25 @@ if(is_post_request()) {
     <title>Edit Tournament</title>
 </head>
 <body>
-    <h1><?php echo "Editing \"" . $tournament['name'] ."\"" ?></h1>
+    <h1><?php echo "Editing \"" . $tournament['NAME'] ."\"" ?></h1>
     <a href="index.php">Back</a>
     <form action="edit_tournament.php" method="post">
         <label>Name:
-            <input type="text" name="name" value="<?php echo $tournament['name'] ?>">
+            <input type="text" name="name" value="<?php echo $tournament['NAME'] ?>">
         </label>
         <br>
         <label>Info:
-            <input type="text" name="info" value="<?php echo $tournament['info'] ?>">
+            <input type="text" name="info" value="<?php echo $tournament['INFO'] ?>">
         </label>
         <br>
         <label>Deadline:
-            <input type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['deadline']) ?>">
+            <input type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['SIGNUP_DEADLINE']) ?>">
         </label>
         <br>
         <label>Organizer:
-            <input type="text" name="deadline" value="<?php echo $tournament['organizer'] ?>">
+            <input type="text" name="organizer" value="<?php echo $tournament['ORGANIZER_ID'] ?>">
         </label>
+        <input name="tournament_id" value="<?php echo $tournament_id ?>" hidden>
         <br>
         <input type="submit">
     </form>

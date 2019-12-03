@@ -140,12 +140,12 @@ function edit_tournament($tournament) {
     global $link;
     $sql = "UPDATE TOURNAMENT SET ";
     $sql .= "NAME='" . $tournament['name'] . "', ";
-    $sql .= "INFO='" . $tournament['info'] . "', ";
+    $sql .= "INFO='" . mysqli_real_escape_string($link, $tournament['info']) . "', ";
     $sql .= "SIGNUP_DEADLINE='" . $tournament['deadline'] . "', ";
     $sql .= "ORGANIZER_ID='" . $tournament['organizer'] . "' ";
     $sql .= "WHERE TOURNAMENT_ID='" . $tournament['tournament_id'] . "' ";
     $sql .= "LIMIT 1";
-    
+
     return mysqli_query($link, $sql);
 }
 
