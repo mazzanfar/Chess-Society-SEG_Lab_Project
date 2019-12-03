@@ -18,8 +18,6 @@ session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["is_officer"] === 1){
     echo "<a href='new.php'>Create new news</a>"; // only show this for officers
 }
-var_dump($_SESSION);
-echo isset($_SESSION["loggedin"]);
 ?>
 
 <div id="news">
@@ -30,12 +28,15 @@ echo isset($_SESSION["loggedin"]);
     if (mysqli_num_rows($result_set)) {
         while ($NEWS = mysqli_fetch_assoc($result_set)) {
             echo "<div class='NEWS'>
-                <p>" . $NEWS["INFO"] . "</p>
-                <a href='./edit.php?id=" . $NEWS["NEWS_ID"] . "'>Edit</a>
-                <a href='./delete.php?id=" . $NEWS["NEWS_ID"]. "'>Delete</a>
+                <p>" . $NEWS["INFO"] . "</p>";
+                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["is_officer"] === 1){
+                    echo "<a href='./edit.php?id=" . $NEWS["NEWS_ID"] . "'>Edit</a>
+                            <a href='./delete.php?id=" . $NEWS["NEWS_ID"]. "'>Delete</a>";
+                }
+
                 
                  
-              </div>";
+              echo "</div>";
         }
     } else {
         echo "<p>The chess society currently has no news </p>";
