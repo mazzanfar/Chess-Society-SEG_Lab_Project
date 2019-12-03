@@ -1,5 +1,8 @@
 <?php
 require_once "../../private/initialise.php";
+
+// Initialize the session
+session_start();
 ?>
 
 <html>
@@ -9,9 +12,15 @@ require_once "../../private/initialise.php";
 </head>
 <body>
 <h1>Chess society news</h1>
-<a href="../">Back to home page</a>
+<a href="../index.php">Back to home page</a>
 <br/>
-<a href="new.php">Create new news</a> <!-- only show this for admins -->
+<?php
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["is_officer"] === 1){
+    echo "<a href='new.php'>Create new news</a>"; // only show this for officers
+}
+var_dump($_SESSION);
+echo isset($_SESSION["loggedin"]);
+?>
 
 <div id="news">
     <?php
@@ -22,9 +31,10 @@ require_once "../../private/initialise.php";
         while ($NEWS = mysqli_fetch_assoc($result_set)) {
             echo "<div class='NEWS'>
                 <p>" . $NEWS["INFO"] . "</p>
-                <!--only show these if logged in as an administrator-->
                 <a href='./edit.php?id=" . $NEWS["NEWS_ID"] . "'>Edit</a>
-                <a href='./delete.php?id=" . $NEWS["NEWS_ID"] . "'>Delete</a>
+                <a href='./delete.php?id=" . $NEWS["NEWS_ID"]. "'>Delete</a>
+                
+                 
               </div>";
         }
     } else {
