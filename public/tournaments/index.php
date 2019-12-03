@@ -1,12 +1,12 @@
 <?php
 require_once "../../private/initialise.php";
-$_SESSION['id'] = '1000';
+$_SESSION['id'] = '1';
 ?>
 
     <html>
     <head>
         <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
-        <title>Chess society tournaments</title>
+        <title>Chess Society Tournaments</title>
     </head>
     <body>
     <h1>Chess society tournaments</h1>
@@ -26,7 +26,6 @@ $_SESSION['id'] = '1000';
                     echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
                 }
 
-
                 if (!in_array($_SESSION['id'], get_tournament_participants($tournament['TOURNAMENT_ID'])) &&
                     new DateTime() < new DateTime($tournament['SIGNUP_DEADLINE'])) {
                     echo "<form action='signup.php'>
@@ -41,7 +40,7 @@ $_SESSION['id'] = '1000';
                 </div>";
             }
         } else {
-            echo "<p>The chess society currently has no upcoming tournaments </p>";
+            echo "<p>The chess society currently has no upcoming tournaments</p>";
         }
         ?>
     </div>
