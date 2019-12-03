@@ -8,7 +8,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    redirect_to(path: "../index.php");
+    redirect_to("/welcome.php");
     exit;
 }
 
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["is_officer"] = $is_officer;
                             
                             // Redirect user to welcome page
-                            redirect_to(path: "../index.php");
+                            redirect_to("/welcome.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";

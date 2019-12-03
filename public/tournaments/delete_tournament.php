@@ -9,7 +9,7 @@ if(is_post_request()) {
     }
     redirect_to("tournaments/index.php");
 } else {
-    $tournament_id = $_GET['tournament_id'] ?? 1;
+    $tournament_id = $_GET['id'] ?? 1;
 }
 ?>
 
