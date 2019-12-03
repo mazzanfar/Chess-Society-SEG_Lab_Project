@@ -15,8 +15,9 @@ include("../private/shared/chess_header.php");
 
     <div class="nav">
 
-    <a href="#">Register</a>
-    <a href="#">Login</a>
+    <a href="log_in/register.php">Register</a>
+    <a href="log_in/login.php">Login</a>
+    <a href="log_in/logout.php">Logout</a>
 
     </div>
 

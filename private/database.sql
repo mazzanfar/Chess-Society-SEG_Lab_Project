@@ -4,6 +4,7 @@ CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    is_officer BOOLEAN DEFAULT FALSE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -17,8 +18,12 @@ CREATE TABLE event(
       expires DATETIME
 );
 
-INSERT into event(name, event.description, time, location, expires) VALUES ('Meet and greet', 'Small meet and greet for society members',
-                                                                            '2015-11-05 14:29:36', 'House', '2018-11-05 14:29:36');
+INSERT into event(name, event.description, time, available_from, location, expires) VALUES ('Meet and greet', 'Small meet and greet for society members',
+                                                                            '2019-12-05 14:29:36','1999-12-05 14:29:36', 'House', '2020-11-05 14:29:36');
+
+
+INSERT INTO users(username, password, is_officer)
+VALUES ('michael','123456',TRUE);
 
 CREATE TABLE MEMBER (
     MEMBER_ID INT NOT NULL AUTO_INCREMENT,
