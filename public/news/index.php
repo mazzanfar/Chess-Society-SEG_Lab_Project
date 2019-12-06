@@ -1,8 +1,5 @@
 <?php
 require_once "../../private/initialise.php";
-
-// Initialize the session
-session_start();
 ?>
 
 <html>
