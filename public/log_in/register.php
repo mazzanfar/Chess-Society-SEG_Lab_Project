@@ -103,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <?php require_bootstrap() ?>
+    <?php require_once("../../private/shared/chess_head.php") ?>
     <link rel="stylesheet" href="../stylesheets/login.css" type="text/css">
 </head>
 <body>

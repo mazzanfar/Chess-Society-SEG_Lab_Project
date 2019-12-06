@@ -1,6 +1,8 @@
 <?php
 require_once "../../private/initialise.php";
 
+require_officer();
+
 if (is_post_request()) {
     $delete = $_POST['delete'];
     if ($delete === "yes") {
@@ -21,16 +23,19 @@ if (is_post_request()) {
 <html>
 <head>
     <title>Chess society events</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
+    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
 </head>
 <body>
+<?php include("../../private/shared/chess_header.php") ?>
 <h1><?php echo "Delete event \"" . $event['name'] ."\"?" ?></h1>
 <a href="index.php">Back</a>
-<form action="delete.php" method="post">
-    <label>
+<form class="event-form" action="delete.php" method="post">
+    <label class="event-form-radio">
         <input type="radio" name="delete" value="no">
         No
     </label>
-    <label>
+    <label class="event-form-radio">
         <input type="radio" name="delete" value="yes">
         Yes
     </label>
