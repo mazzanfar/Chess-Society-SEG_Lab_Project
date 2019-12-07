@@ -42,6 +42,7 @@ if (is_officer()) {
 
 </body>
 </html>
+<?php include("../../private/shared/chess_footer.php"); ?>
 
 <?php
     mysqli_free_result($result_set);

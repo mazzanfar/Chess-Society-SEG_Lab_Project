@@ -48,3 +48,4 @@ if (is_post_request()) {
 
 </body>
 </html>
+<?php include("../../private/shared/chess_footer.php"); ?>

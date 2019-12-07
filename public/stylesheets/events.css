@@ -35,3 +35,12 @@ h2 {
 .event-form-radio {
     margin: 0 1rem;
 }
+
+.validation-error {
+    color: red;
+    font-size: larger;
+}
+
+.event-content {
+    padding: 20px 0 0 20px;
+}

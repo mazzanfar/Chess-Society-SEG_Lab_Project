@@ -3,6 +3,7 @@ require_once "../../private/initialise.php";
 
 require_officer();
 
+$validation_result = true;
 if (is_post_request()) {
     $event['id'] = $_POST['id'];
     $event['name'] = $_POST['name'];
@@ -11,17 +12,24 @@ if (is_post_request()) {
     $event['time'] = $_POST['time'];
     $event['available_from'] = $_POST['available_from'];
     $event['expires'] = $_POST['expires'];
-    update_event($event);
-    redirect_to("events/index.php");
+
+    $validation_result = validate_event($event);
+    if ($validation_result === true) {
+        update_event($event);
+        redirect_to("events/index.php");
+    }
+    $result_set = get_event_by_id($_POST['id']);
+    $db_event = mysqli_fetch_assoc($result_set);
+    $title = $db_event['name'];
 } else {
     $id = $_GET['id'] ?? 1;
     $result_set = get_event_by_id($id);
     $event = mysqli_fetch_assoc($result_set);
+    $title = $event['name'];
     mysqli_free_result($result_set);
     mysqli_close($link);
 
 }
-
 
 ?>
 
@@ -33,8 +41,18 @@ if (is_post_request()) {
 </head>
 <body>
     <?php include("../../private/shared/chess_header.php") ?>
-    <h1><?php echo "Editing \"" . $event['name'] ."\"" ?></h1>
+
+    <div class="event-content">
+    <h1><?php echo "Editing \"" . $title ."\"" ?></h1>
     <a href="index.php">Back</a>
+    <?php if ($validation_result !== true) {
+        echo "<div class='validation-errors'>";
+        foreach ($validation_result as $error) {
+            echo "<p class='validation-error'>" . $error . "</p>";
+        }
+        echo "</div>";
+
+    }?>
     <form class="event-form" action="edit.php" method="post">
         <label class="event-form-input">
             Name
@@ -70,7 +88,9 @@ if (is_post_request()) {
         <input type="submit">
 
     </form>
+    </div>
 
 
 </body>
 </html>
+<?php include("../../private/shared/chess_footer.php"); ?>

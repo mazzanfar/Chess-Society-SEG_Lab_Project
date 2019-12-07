@@ -30,6 +30,7 @@
 
 /* Change color on hover */
 .header-nav a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #9e0447;
+    color: white;
+    text-decoration: none;
 }
