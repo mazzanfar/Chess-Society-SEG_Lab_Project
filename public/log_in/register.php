@@ -3,7 +3,7 @@ require_once("../../private/initialise.php");
 
 include("../../private/shared/chess_header.php");
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(is_logged_in()){
     redirect_to("/index.php");
 }
 

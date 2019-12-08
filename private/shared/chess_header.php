@@ -9,7 +9,10 @@ echo '
         <a class="header-link" href="../../public/tournaments/index.php">TOURNAMENTS</a>
         </div>
         <div class="header-right-nav">';
-        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        if (is_logged_in()) {
+            if (is_officer()) {
+                echo '<a class="header-link" href="../../public/admin/index.php">Admin page</a>';
+            }
             echo '<a class="header-link" href="../../public/log_in/logout.php">Logout</a>';
         } else {
             echo '<a class="header-link" href="../../public/log_in/login.php">Login</a>';

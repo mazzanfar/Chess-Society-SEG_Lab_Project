@@ -48,6 +48,10 @@ function is_officer() {
     return isset($_SESSION["is_officer"]) && $_SESSION["is_officer"] === 1;
 }
 
+function is_logged_in() {
+    return isset($_SESSION["loggedin"]) && $_SESSION["loggedin"];
+}
+
 function require_officer() {
     if (!is_officer()) {
         redirect_to("/index.php");

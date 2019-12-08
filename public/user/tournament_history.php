@@ -1,6 +1,5 @@
 <?php
 require_once "../../private/initialise.php";
-$_SESSION['id'] = '1000';
 ?>
 
 <html>

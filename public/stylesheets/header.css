@@ -10,7 +10,8 @@
 }
 
 .header-title a:hover {
-    text-decoration: none
+    text-decoration: none;
+    color: white;
 }
 
 /* Style the top navigation bar */

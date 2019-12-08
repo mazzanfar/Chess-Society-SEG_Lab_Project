@@ -5,7 +5,7 @@ include("../../private/shared/chess_header.php");
 
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(is_logged_in()){
     redirect_to("/index.php");
 }
 
@@ -90,7 +90,7 @@ if(is_post_request()){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Chess society login</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
     <link rel="stylesheet" href="../stylesheets/login.css" type="text/css">
 </head>
