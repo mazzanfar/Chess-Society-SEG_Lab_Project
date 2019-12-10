@@ -26,9 +26,6 @@ INSERT into event(name, event.description, time, available_from, location, expir
                                                                             '2019-12-05 14:29:36','1999-12-05 14:29:36', 'House', '2020-11-05 14:29:36');
 
 
-INSERT INTO users(username, password, is_officer)
-VALUES ('michael','123456',TRUE);
-
 CREATE TABLE MEMBER (
     MEMBER_ID INT NOT NULL AUTO_INCREMENT,
     USERNAME VARCHAR(50) NOT NULL UNIQUE,
