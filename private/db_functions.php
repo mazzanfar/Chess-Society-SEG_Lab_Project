@@ -52,10 +52,10 @@ function delete_user($id)
     return mysqli_query($link, $sql);
 }
 
-function get_members() 
+function get_users()
 {
     global $link;
-    $sql = "SELECT * FROM MEMBER";
+    $sql = "SELECT * FROM users";
 
     return mysqli_query($link, $sql);
 }
@@ -253,8 +253,8 @@ function get_tournaments_participated_in($id)
 function insert_tournament_participant($tournament_id, $participant_id) 
 {
     global $link;
-    $query = "INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID) VALUE (" .
-            $tournament_id . ", " . $participant_id . ")";
+    $query = "INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID) VALUE ('" .
+            $tournament_id . "', '" . $participant_id . "')";
     return mysqli_query($link, $query);
 }
 

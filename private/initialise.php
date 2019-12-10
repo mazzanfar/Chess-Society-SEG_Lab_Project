@@ -11,6 +11,8 @@ define("WWW_ROOT", $doc_root);
 
 require_once('functions.php');
 require_once('database.php');
+require_once('validation_functions.php');
 
 $db = db_connect();
+session_start()
 ?>

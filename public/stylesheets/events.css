@@ -1,8 +1,5 @@
-body {
-    font-family: Roboto, sans-serif;
-}
-
 #events {
+    padding: 2rem 0 0 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -13,12 +10,42 @@ body {
     border-radius: 25px;
     padding: 1.2rem;
     width: 400px;
+    height: 200px;
 }
 
 .event-information {
     font-size: smaller;
 }
 
+.admin-button {
+    padding: 0 0.5rem;
+}
+
 h2 {
-    margin-bottom: 0;
+    margin-bottom: 0;}
+
+.event-form {
+    width: 350px;
+    padding: 20px;
+}
+
+.event-form-input {
+    width: 100%;
+}
+
+.event-form-radio {
+    margin: 0 1rem 0 0;
+}
+
+.validation-error {
+    color: red;
+    font-size: larger;
+}
+
+.event-content {
+    padding: 20px 0 0 20px;
+}
+
+.event-submit {
+    margin: 1rem 0;
 }

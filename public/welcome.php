@@ -5,9 +5,6 @@ include("../private/shared/chess_header.php");
 
 ?>
 <?php
-// Initialize the session
-session_start();
- 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     redirect_to("log_in/login.php");

@@ -1,6 +1,8 @@
 <?php
 require_once "../../private/initialise.php";
 
+require_officer();
+
 if(is_post_request()) {
     $tournament['tournament_id'] = $_POST['tournament_id'];
     $tournament['name'] = $_POST['name'];
@@ -21,29 +23,35 @@ if(is_post_request()) {
 <html>
 <head>
     <title>Edit Tournament</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
+    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
 </head>
 <body>
+    <?php include("../../private/shared/chess_header.php") ?>
+    <div class="event-content">
     <h1><?php echo "Editing \"" . $tournament['NAME'] ."\"" ?></h1>
     <a href="index.php">Back</a>
-    <form action="edit_tournament.php" method="post">
-        <label>Name:
-            <input type="text" name="name" value="<?php echo $tournament['NAME'] ?>">
+    <form class="event-form" action="edit_tournament.php" method="post">
+        <label class="event-form-input">Name
+            <input class="event-form-input" type="text" name="name" value="<?php echo $tournament['NAME'] ?>">
         </label>
         <br>
-        <label>Info:
-            <input type="text" name="info" value="<?php echo $tournament['INFO'] ?>">
+        <label class="event-form-input">Info
+            <input class="event-form-input" type="text" name="info" value="<?php echo $tournament['INFO'] ?>">
         </label>
         <br>
-        <label>Deadline:
-            <input type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['SIGNUP_DEADLINE']) ?>">
+        <label class="event-form-input">Deadline
+            <input class="event-form-input" type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['SIGNUP_DEADLINE']) ?>">
         </label>
         <br>
-        <label>Organizer:
-            <input type="text" name="organizer" value="<?php echo $tournament['ORGANIZER_ID'] ?>">
+        <label class="event-form-input">Organizer
+            <input class="event-form-input" type="text" name="organizer" value="<?php echo $tournament['ORGANIZER_ID'] ?>">
         </label>
         <input name="tournament_id" value="<?php echo $tournament_id ?>" hidden>
         <br>
         <input type="submit">
     </form>
+    </div>
 </body>
 </html>
+<?php include("../../private/shared/chess_footer.php"); ?>
