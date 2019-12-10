@@ -5,7 +5,11 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     is_officer BOOLEAN DEFAULT FALSE,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    full_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    gender VARCHAR(15) NOT NULL,
+    age DATE NOT NULL
 );
 
 CREATE TABLE event(
