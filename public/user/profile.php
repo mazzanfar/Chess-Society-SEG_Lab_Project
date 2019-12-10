@@ -1,23 +1,27 @@
 <?php
-require_once("../private/initialise.php");
+require_once("../../private/initialise.php");
 require_login();
-$get_user = mysqli_query($link, "SELECT * FROM users WHERE username ='" . $_SESSION['username'] . "'");
-if ($get_user->num_rows == 1) {
-    $profile_data = $get_user->fetch_assoc();
+if (isset($_GET['id'])) { // only admins can view other people's profiles
+    require_officer();
 }
+$id = $_GET['id'] ?? $_SESSION['id'];
+$get_user = mysqli_query($link, "SELECT * FROM users WHERE id ='" . $id . "'");
+$profile_data = $get_user->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
 <html>    
 <head>        
 	<meta charset="UTF-8">
-    <?php require_once("../private/shared/chess_head.php") ?>
+    <?php require_once("../../private/shared/chess_head.php") ?>
     <title><?php echo $profile_data['username'] ?>'s Profile</title>
 </head>
 <body>
-    <?php include("../private/shared/chess_header.php"); ?>
+    <?php include("../../private/shared/chess_header.php"); ?>
     <h3>Personal Information</h3>
-    <a href="edit-profile.php?user=<?php echo $profile_data['username'] ?>">Edit Profile</a>
+    <?php if (!isset($_GET['id'])) { // can only edit own profile
+        echo '<a href="edit-profile.php">Edit Profile</a>';
+    } ?>
         <table>
                     <tr>                
                     	<td>Name:</td><td><?php echo $profile_data['full_name'] ?? "No name set" ?></td>

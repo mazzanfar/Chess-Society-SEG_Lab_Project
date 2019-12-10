@@ -17,7 +17,7 @@ require_officer();
     <a href="../">Back to home page</a>
     <br/>
     <?php
-    $result_set = get_members();
+    $result_set = get_users();
     if (mysqli_num_rows($result_set)) {
         echo "<table>";
         $headers = true;
@@ -26,18 +26,16 @@ require_officer();
                 echo "<tr class='user'>
                 <th>Member ID</th>
                 <th>Username</th>
-                <th>First name</th>
-                <th>Last name</th>
+                <th>Name</th>
                 <th>Profile</th>
                 </tr>";
                 $headers = false;
             }
             echo "<tr class='user'>
-            <td>" . $user["MEMBER_ID"] . "</td>
-            <td>" . $user["USERNAME"] . "</td>
-            <td>" . $user["FIRST_NAME"] . "</td>
-            <td>" . $user["LAST_NAME"] . "</td>
-            <td><a href='../user.php?id=" . $user["MEMBER_ID"] . "'>View</a></td>
+            <td>" . $user["id"] . "</td>
+            <td>" . $user["username"] . "</td>
+            <td>" . $user["full_name"] . "</td>
+            <td><a href='../user/profile.php?id=" . $user["id"] . "'>View</a></td>
             </tr>";
         }
         echo "<table>";

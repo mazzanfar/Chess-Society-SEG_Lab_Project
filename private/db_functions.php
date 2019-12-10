@@ -52,10 +52,10 @@ function delete_user($id)
     return mysqli_query($link, $sql);
 }
 
-function get_members() 
+function get_users()
 {
     global $link;
-    $sql = "SELECT * FROM MEMBER";
+    $sql = "SELECT * FROM users";
 
     return mysqli_query($link, $sql);
 }

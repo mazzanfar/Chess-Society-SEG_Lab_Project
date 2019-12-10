@@ -13,6 +13,7 @@ echo '
             if (is_officer()) {
                 echo '<a class="header-link" href="../../public/admin/index.php">Admin page</a>';
             }
+            echo '<a class="header-link" href="../../public/user/profile.php">My Profile</a>';
             echo '<a class="header-link" href="../../public/log_in/logout.php">Logout</a>';
         } else {
             echo '<a class="header-link" href="../../public/log_in/login.php">Login</a>';
