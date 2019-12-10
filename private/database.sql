@@ -92,7 +92,7 @@ CREATE TABLE TOURNAMENT_PARTICIPANT (
                                     TOURNAMENT_ID INT NOT NULL,
                                     PARTICIPANT_ID INT NOT NULL,
                                     FOREIGN KEY (TOURNAMENT_ID) REFERENCES TOURNAMENT(TOURNAMENT_ID),
-                                    FOREIGN KEY (PARTICIPANT_ID) REFERENCES MEMBER(MEMBER_ID)
+                                    FOREIGN KEY (PARTICIPANT_ID) REFERENCES users(id)
 );
 
 INSERT INTO NEWS(INFO, THERELEASE, EXPIRY) VALUES ('Magnus Carlsen increased his lead even more at the Tata Steel Chess India Rapid & Blitz.',

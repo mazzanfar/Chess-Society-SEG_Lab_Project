@@ -27,11 +27,11 @@ if(is_officer()){
             <p>" . $tournament["INFO"] . "</p>
             <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
 
-            if ($_SESSION["id"] === $tournament["ORGANIZER_ID"]) {
+            if (is_logged_in() && $_SESSION["id"] === $tournament["ORGANIZER_ID"]) {
                 echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
             }
 
-            if (!in_array($_SESSION['id'], get_tournament_participants($tournament['TOURNAMENT_ID'])) &&
+            if (is_logged_in() && !in_array($_SESSION['id'], get_tournament_participants($tournament['TOURNAMENT_ID'])) &&
                 new DateTime() < new DateTime($tournament['SIGNUP_DEADLINE'])) {
                 echo "<form action='signup.php'>
                         <input type='text' name='participant_id' hidden value='" . $_SESSION['id'] . "'/>

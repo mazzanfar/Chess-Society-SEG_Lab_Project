@@ -9,11 +9,7 @@ require_once "../../private/initialise.php";
     <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
 </head>
 <body>
-<?php include("../../private/shared/chess_header.php"); ?>
-<h1>Chess society news</h1>
-<a href="../index.php">Back to home page</a>
-<br/>
-<?php
+<?php include("../../private/shared/chess_header.php");
 if(is_officer()){
     echo "<a href='new.php'>Create new news</a>"; // only show this for officers
 }

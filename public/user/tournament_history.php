@@ -1,14 +1,18 @@
 <?php
 require_once "../../private/initialise.php";
+require_login();
 ?>
 
 <html>
 <head>
     <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <?php require_once("../../private/shared/chess_head.php") ?>
     <title>My tournaments</title>
 </head>
 <body>
-<h1>Tournaments participated in</h1>
+<?php include("../../private/shared/chess_header.php"); ?>
+<div class="event-content">
+<h1>My tournaments</h1>
 <a href="../">Back to home page</a>
 <br/>
 
@@ -18,20 +22,23 @@ require_once "../../private/initialise.php";
     if (count($tournaments) > 0) {
         foreach ($tournaments as $tournament_id) {
             $tournament = mysqli_fetch_assoc(get_tournament_by_id($tournament_id));
-            echo "<div class='event'>
+            echo "<div>
                 <p>" . $tournament["INFO"] . "</p>
-                <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
+                <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>" .
+                "</div>";
+
         }
     } else {
         echo "<p>You have not participated in any tournaments </p>";
     }
     ?>
 </div>
-
+</div>
 
 </body>
 </html>
 
 <?php
+include("../../private/shared/chess_footer.php");
 mysqli_close($link);
-?>/
+?>

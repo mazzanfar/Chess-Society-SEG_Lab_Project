@@ -28,8 +28,9 @@ if (is_post_request()) {
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php") ?>
+
+<div class="event-content">
 <h1><?php echo "Delete event \"" . $event['name'] ."\"?" ?></h1>
-<a href="index.php">Back</a>
 <form class="event-form" action="delete.php" method="post">
     <label class="event-form-radio">
         <input type="radio" name="delete" value="no">
@@ -41,10 +42,10 @@ if (is_post_request()) {
     </label>
     <input name="id" value="<?php echo $id ?>" hidden>
     <br/>
-    <input type="submit">
+    <input type="submit" class="event-submit" value="Confrim">
 
 </form>
-
+</div>
 
 </body>
 </html>
