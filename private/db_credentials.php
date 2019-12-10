@@ -14,7 +14,8 @@ define('DB_NAME', 'chess_society_db');
 $link = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
 // Check connection
-if($link === false){
+if($link === false)
+{
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
