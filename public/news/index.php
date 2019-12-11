@@ -18,7 +18,6 @@ if(is_officer()){
 <div id="content">
     <?php
     $date = date("Y-m-d H:i:s");
-    // TODO: only use date option when not logged in as admine
     $result_set = get_news(["date" => $date]);
     if (mysqli_num_rows($result_set)) {
         while ($NEWS = mysqli_fetch_assoc($result_set)) {

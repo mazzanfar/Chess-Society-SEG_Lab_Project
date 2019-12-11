@@ -95,7 +95,6 @@ if(is_post_request()){
 <body>
     <div class="wrapper">
         <h2>Login</h2>
-        <a href="../">Back to home page</a>
         <p>Please fill in your credentials to login.</p>
         <form method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">

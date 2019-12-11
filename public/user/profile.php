@@ -15,6 +15,7 @@ $profile_data = $get_user->fetch_assoc();
 	<meta charset="UTF-8">
     <?php require_once("../../private/shared/chess_head.php") ?>
     <title><?php echo $profile_data['username'] ?>'s Profile</title>
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
     <?php include("../../private/shared/chess_header.php"); ?>
@@ -36,6 +37,7 @@ $profile_data = $get_user->fetch_assoc();
                     <tr>
                         <td>Address:</td><td><?php echo $profile_data['address'] ?? "No address set" ?></td>
                     </tr>        
-        </table> 
+        </table>
+    <a href="delete_account.php">Delete my account</a>
     </body>
 </html>

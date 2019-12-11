@@ -52,7 +52,7 @@ function delete_event($id)
 function delete_user($id)
 {
     global $link;
-    $sql = "DELETE FROM MEMBER";
+    $sql = "DELETE FROM users";
     $sql .= " WHERE id='" . $id . "' ";
     $sql .= "LIMIT 1";
 
