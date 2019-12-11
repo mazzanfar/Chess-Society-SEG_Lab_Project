@@ -20,8 +20,9 @@ $profile_data = $get_user->fetch_assoc();
     <?php include("../../private/shared/chess_header.php"); ?>
     <h3>Personal Information</h3>
     <?php if (!isset($_GET['id'])) { // can only edit own profile
-        echo '<a href="edit-profile.php">Edit Profile</a>';
+        echo '<a href="edit-profile.php">Edit Profile</a><br/>';
     } ?>
+    <a href="tournament_history.php">My tournament history</a>
         <table>
                     <tr>                
                     	<td>Name:</td><td><?php echo $profile_data['full_name'] ?? "No name set" ?></td>

@@ -6,23 +6,22 @@ require_once "../../private/initialise.php";
 <head>
     <title>Chess Society Tournaments</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php"); ?>
-<h1>Chess society tournaments</h1>
 <?php
 if(is_officer()){
     echo "<a href='new_tournament.php'>Create new tournament</a>";
 }
 ?>
 
-<div id="events">
+<div id="content">
     <?php
     $result_set = get_tournaments();
     if (mysqli_num_rows($result_set)) {
         while ($tournament = mysqli_fetch_assoc($result_set)) {
-            echo "<div class='event'>
+            echo "<div class='content-item'>
             <p>" . $tournament["NAME"] . "</p>
             <p>" . $tournament["INFO"] . "</p>
             <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
@@ -58,5 +57,4 @@ if(is_officer()){
 
 <?php
 mysqli_free_result($result_set);
-mysqli_close($link);
 ?>

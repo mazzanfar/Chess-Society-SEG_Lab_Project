@@ -1,11 +1,11 @@
-#events {
+#content {
     padding: 2rem 0 0 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.event {
+.content-item {
     border: #333333 solid 1px;
     border-radius: 25px;
     padding: 1.2rem;
@@ -13,7 +13,7 @@
     height: 200px;
 }
 
-.event-information {
+.content-information {
     font-size: smaller;
 }
 
@@ -24,16 +24,16 @@
 h2 {
     margin-bottom: 0;}
 
-.event-form {
+.content-form {
     width: 350px;
     padding: 20px;
 }
 
-.event-form-input {
+.content-form-input {
     width: 100%;
 }
 
-.event-form-radio {
+.content-form-radio {
     margin: 0 1rem 0 0;
 }
 
@@ -42,10 +42,14 @@ h2 {
     font-size: larger;
 }
 
-.event-content {
+.content-inner {
     padding: 20px 0 0 20px;
 }
 
-.event-submit {
+.content-submit {
     margin: 1rem 0;
+}
+
+.user-column {
+    padding: 0 40px 0 0;
 }

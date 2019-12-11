@@ -16,7 +16,6 @@ if(is_post_request()) {
     $result_set = get_tournament_by_id($tournament_id);
     $tournament = mysqli_fetch_assoc($result_set);
     mysqli_free_result($result_set);
-    mysqli_close($link);
 }
 ?>
 
@@ -24,28 +23,28 @@ if(is_post_request()) {
 <head>
     <title>Edit Tournament</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
     <?php include("../../private/shared/chess_header.php") ?>
-    <div class="event-content">
+    <div class="content-inner">
     <h1><?php echo "Editing \"" . $tournament['NAME'] ."\"" ?></h1>
     <a href="index.php">Back</a>
-    <form class="event-form" action="edit_tournament.php" method="post">
-        <label class="event-form-input">Name
-            <input class="event-form-input" type="text" name="name" value="<?php echo $tournament['NAME'] ?>">
+    <form class="content-form" action="edit_tournament.php" method="post">
+        <label class="content-form-input">Name
+            <input class="content-form-input" type="text" name="name" value="<?php echo $tournament['NAME'] ?>">
         </label>
         <br>
-        <label class="event-form-input">Info
-            <input class="event-form-input" type="text" name="info" value="<?php echo $tournament['INFO'] ?>">
+        <label class="content-form-input">Info
+            <input class="content-form-input" type="text" name="info" value="<?php echo $tournament['INFO'] ?>">
         </label>
         <br>
-        <label class="event-form-input">Deadline
-            <input class="event-form-input" type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['SIGNUP_DEADLINE']) ?>">
+        <label class="content-form-input">Deadline
+            <input class="content-form-input" type="datetime-local" name="deadline" value="<?php echo mysql_date_to_html_date($tournament['SIGNUP_DEADLINE']) ?>">
         </label>
         <br>
-        <label class="event-form-input">Organizer
-            <input class="event-form-input" type="text" name="organizer" value="<?php echo $tournament['ORGANIZER_ID'] ?>">
+        <label class="content-form-input">Organizer
+            <input class="content-form-input" type="text" name="organizer" value="<?php echo $tournament['ORGANIZER_ID'] ?>">
         </label>
         <input name="tournament_id" value="<?php echo $tournament_id ?>" hidden>
         <br>

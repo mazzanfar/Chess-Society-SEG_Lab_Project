@@ -6,7 +6,7 @@ require_once "../../private/initialise.php";
 <head>
     <title>Chess society news</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php");
@@ -15,14 +15,14 @@ if(is_officer()){
 }
 ?>
 
-<div id="events">
+<div id="content">
     <?php
     $date = date("Y-m-d H:i:s");
     // TODO: only use date option when not logged in as admine
     $result_set = get_news(["date" => $date]);
     if (mysqli_num_rows($result_set)) {
         while ($NEWS = mysqli_fetch_assoc($result_set)) {
-            echo "<div class='event'>
+            echo "<div class='content-item'>
                 <p>" . $NEWS["INFO"] . "</p>";
                 if(is_officer()){
                     echo "<a class='admin-button' href='./edit.php?id=" . $NEWS["NEWS_ID"] . "'>Edit</a>
@@ -45,5 +45,4 @@ if(is_officer()){
 
 <?php
     mysqli_free_result($result_set);
-    mysqli_close($link);
 ?>

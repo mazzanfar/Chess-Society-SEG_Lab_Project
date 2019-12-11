@@ -25,11 +25,11 @@ if (is_post_request()) {
 <head>
     <title>Chess society events</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php") ?>
-<div class="event-content">
+<div class="content-inner">
 <h2>New event</h2>
 <a href="index.php">Back</a>
 <?php if ($validation_result !== true) {
@@ -40,35 +40,35 @@ if (is_post_request()) {
     echo "</div>";
 
 }?>
-<form action="new.php" class="event-form" method="post">
-    <label class="event-form-input">
+<form action="new.php" class="content-form" method="post">
+    <label class="content-form-input">
         Name
-        <input class="event-form-input" name="name" placeholder="Event name">
+        <input class="content-form-input" name="name" placeholder="Event name">
     </label>
     <br/>
-    <label class="event-form-input">
+    <label class="content-form-input">
         Description
-        <input class="event-form-input" type="text" name="description" placeholder="Event description">
+        <input class="content-form-input" type="text" name="description" placeholder="Event description">
     </label>
     <br/>
-    <label class="event-form-input">
+    <label class="content-form-input">
         Location
-        <input class="event-form-input" type="text" name="location" placeholder="Event location">
+        <input class="content-form-input" type="text" name="location" placeholder="Event location">
     </label>
     <br/>
-    <label class="event-form-input">
+    <label class="content-form-input">
         Time
-        <input class="event-form-input" type="datetime-local" name="time">
+        <input class="content-form-input" type="datetime-local" name="time">
     </label class="event-form-input">
     <br/>
     <label>
         Available from
-        <input class="event-form-input" type="datetime-local" name="available_from">
+        <input class="content-form-input" type="datetime-local" name="available_from">
     </label>
     <br/>
-    <label class="event-form-input">
+    <label class="content-form-input">
         Expires
-        <input class="event-form-input" type="datetime-local" name="expires">
+        <input class="content-form-input" type="datetime-local" name="expires">
     </label>
     <br/>
     <input type="submit">

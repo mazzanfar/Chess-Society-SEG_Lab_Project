@@ -5,17 +5,17 @@ require_officer();
 
 <html>
 <head>
-    <title>Chess society events</title>
+    <title>Chess society admin</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php"); ?>
 
-<div class="event-content">
-    <h1>Chess society admin page</h1>
-    <a href="../">Back to home page</a>
+<div class="content-inner">
+    <h1>Admin page</h1>
     <br/>
+    <h3>Society members</h3>
     <?php
     $result_set = get_users();
     if (mysqli_num_rows($result_set)) {
@@ -24,10 +24,10 @@ require_officer();
         while ($user = mysqli_fetch_assoc($result_set)) {
             if ($headers) {
                 echo "<tr class='user'>
-                <th>Member ID</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Profile</th>
+                <th class='user-column'>Member ID</th>
+                <th class='user-column'>Username</th>
+                <th class='user-column'>Name</th>
+                <th class='user-column'>Profile</th>
                 </tr>";
                 $headers = false;
             }
@@ -49,7 +49,4 @@ require_officer();
 </html>
 <?php include("../../private/shared/chess_footer.php"); ?>
 
-<?php
-mysqli_free_result($result_set);
-mysqli_close($link);
-?>
+<?php mysqli_free_result($result_set); ?>

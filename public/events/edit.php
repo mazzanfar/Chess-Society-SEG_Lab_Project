@@ -27,7 +27,6 @@ if (is_post_request()) {
     $event = mysqli_fetch_assoc($result_set);
     $title = $event['name'];
     mysqli_free_result($result_set);
-    mysqli_close($link);
 
 }
 
@@ -37,12 +36,12 @@ if (is_post_request()) {
 <head>
     <title>Chess society events</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
     <?php include("../../private/shared/chess_header.php") ?>
 
-    <div class="event-content">
+    <div class="content-inner">
     <h1><?php echo "Editing \"" . $title ."\"" ?></h1>
     <a href="index.php">Back</a>
     <?php if ($validation_result !== true) {
@@ -53,35 +52,35 @@ if (is_post_request()) {
         echo "</div>";
 
     }?>
-    <form class="event-form" action="edit.php" method="post">
-        <label class="event-form-input">
+    <form class="content-form" action="edit.php" method="post">
+        <label class="content-form-input">
             Name
-            <input class="event-form-input" type="text" name="name" value="<?php echo $event['name'] ?>">
+            <input class="content-form-input" type="text" name="name" value="<?php echo $event['name'] ?>">
         </label>
         <br/>
-        <label class="event-form-input">
+        <label class="content-form-input">
             Description
-            <input class="event-form-input" type="text" name="description" value="<?php echo $event['description'] ?>">
+            <input class="content-form-input" type="text" name="description" value="<?php echo $event['description'] ?>">
         </label>
         <br/>
-        <label class="event-form-input">
+        <label class="content-form-input">
             Location
-            <input class="event-form-input" type="text" name="location" value="<?php echo $event['location'] ?>">
+            <input class="content-form-input" type="text" name="location" value="<?php echo $event['location'] ?>">
         </label>
         <br/>
-        <label class="event-form-input">
+        <label class="content-form-input">
             Time
-            <input class="event-form-input" type="datetime-local" name="time" value="<?php echo mysql_date_to_html_date($event['time']) ?>">
+            <input class="content-form-input" type="datetime-local" name="time" value="<?php echo mysql_date_to_html_date($event['time']) ?>">
         </label>
         <br/>
-        <label class="event-form-input">
+        <label class="content-form-input">
             Available from
-            <input class="event-form-input" type="datetime-local" name="available_from" value="<?php echo mysql_date_to_html_date($event['available_from']) ?>">
+            <input class="content-form-input" type="datetime-local" name="available_from" value="<?php echo mysql_date_to_html_date($event['available_from']) ?>">
         </label>
         <br/>
-        <label class="event-form-input">
+        <label class="content-form-input">
             Expires at
-            <input class="event-form-input" type="datetime-local" name="expires" value="<?php echo mysql_date_to_html_date($event['expires']) ?>">
+            <input class="content-form-input" type="datetime-local" name="expires" value="<?php echo mysql_date_to_html_date($event['expires']) ?>">
         </label>
         <input name="id" value="<?php echo $id ?>" hidden>
         <br/>

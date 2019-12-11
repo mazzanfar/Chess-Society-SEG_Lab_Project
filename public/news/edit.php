@@ -13,7 +13,6 @@ if (is_post_request()) {
     $result_set = get_news_by_id($NEWS_ID);
     $NEWS = mysqli_fetch_assoc($result_set);
     mysqli_free_result($result_set);
-    mysqli_close($link);
 }
 ?>
 

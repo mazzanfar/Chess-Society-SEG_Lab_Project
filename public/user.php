@@ -5,7 +5,6 @@ $id = $_GET['id'] ?? 1;
 $result_set = get_member_by_id($id);
 $member = mysqli_fetch_assoc($result_set);
 mysqli_free_result($result_set);
-mysqli_close($link);
 
 ?>
 

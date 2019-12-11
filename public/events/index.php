@@ -6,7 +6,7 @@ require_once "../../private/initialise.php";
 <head>
     <title>Chess society events</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php");
@@ -16,17 +16,17 @@ if (is_officer()) {
 }
 ?>
 
-<div id="events">
+<div id="content">
     <?php
     $date = date("Y-m-d H:i:s");
     $result_set = get_events(["date" => $date]);
     if (mysqli_num_rows($result_set)) {
         while ($event = mysqli_fetch_assoc($result_set)) {
-            echo "<div class='event'>
+            echo "<div class='content-item'>
                 <h2>" . $event["name"] . "</h2>
-                <span class='event-information'>Location: " . $event["location"] . "</span>
+                <span class='content-information'>Location: " . $event["location"] . "</span>
                 <br/>
-                <span class='event-information'>Time: " . $event["time"] . "</span>
+                <span class='content-information'>Time: " . $event["time"] . "</span>
                 <p>" . $event["description"] . "</p>";
             if (is_officer()) {
                 echo "<a class='admin-button' href='./edit.php?id=" . $event["id"] . "'>Edit</a>";
@@ -46,5 +46,4 @@ if (is_officer()) {
 
 <?php
     mysqli_free_result($result_set);
-    mysqli_close($link);
 ?>

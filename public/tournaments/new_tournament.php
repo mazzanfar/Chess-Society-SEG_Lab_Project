@@ -15,29 +15,29 @@ if(is_post_request()) {
 <head>
     <title>Chess Society Tournaments</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/events.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php") ?>
-<div class="event-content">
+<div class="content-inner">
 
 <h2>New Tournament</h2>
 <a href="index.php">Cancel</a>
-<form class="event-form" action="new_tournament.php" method="post">
-    <label class="event-form-input">Name
-        <input class="event-form-input" type="text" name="name" placeholder="Tournament Name">
+<form class="content-form" action="new_tournament.php" method="post">
+    <label class="content-form-input">Name
+        <input class="content-form-input" type="text" name="name" placeholder="Tournament Name">
     </label>
     <br/>
-    <label class="event-form-input">Info
-        <input class="event-form-input" type="text" name="info" placeholder="Tournament Info">
+    <label class="content-form-input">Info
+        <input class="content-form-input" type="text" name="info" placeholder="Tournament Info">
     </label>
     <br/>
-    <label class="event-form-input">Signup Deadline
-        <input class="event-form-input" type="datetime-local" name="deadline">
+    <label class="content-form-input">Signup Deadline
+        <input class="content-form-input" type="datetime-local" name="deadline">
     </label>
     <br/>
-    <label class="event-form-input">Organizer ID
-        <input class="event-form-input" type="text" name="organizer" placeholder="Organizer ID">
+    <label class="content-form-input">Organizer ID
+        <input class="content-form-input" type="text" name="organizer" placeholder="Organizer ID">
     </label>
     <br/>
     <input type="submit">

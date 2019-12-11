@@ -10,9 +10,14 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $public_end);
 define("WWW_ROOT", $doc_root);
 
 require_once('functions.php');
-require_once('database.php');
+require_once("db_functions.php");
+require_once("db_dev_credentials.php");
 require_once('validation_functions.php');
 
-$db = db_connect();
+$link = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+if ($link === false) {
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
 session_start()
 ?>

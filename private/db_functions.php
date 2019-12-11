@@ -1,9 +1,16 @@
 <?php
-function get_events($options = []) 
+
+function db_disconnect($connection) {
+    if (isset($connection)) {
+        mysqli_close($connection);
+    }
+}
+
+function get_events($options = [])
 {
     global $link;
     $query = "SELECT * FROM event";
-    if (isset($options['date'])) 
+    if (isset($options['date']))
     {
         $date = $options['date'];
         $query = $query . " WHERE available_from < '" . $date .
@@ -12,14 +19,14 @@ function get_events($options = [])
     return mysqli_query($link, $query);
 }
 
-function get_event_by_id($id) 
+function get_event_by_id($id)
 {
     global $link;
     $query = "SELECT * FROM event WHERE id=" . $id;
     return mysqli_query($link, $query);
 }
 
-function update_event($event) 
+function update_event($event)
 {
     global $link;
     $query = "UPDATE event SET " .
@@ -33,7 +40,7 @@ function update_event($event)
     return mysqli_query($link, $query);
 }
 
-function delete_event($id) 
+function delete_event($id)
 {
     global $link;
     $query = "DELETE FROM event " .
@@ -42,13 +49,13 @@ function delete_event($id)
     return mysqli_query($link, $query);
 }
 
-function delete_user($id) 
+function delete_user($id)
 {
     global $link;
     $sql = "DELETE FROM MEMBER";
     $sql .= " WHERE id='" . $id . "' ";
     $sql .= "LIMIT 1";
-    
+
     return mysqli_query($link, $sql);
 }
 
@@ -60,7 +67,7 @@ function get_users()
     return mysqli_query($link, $sql);
 }
 
-function get_tournaments() 
+function get_tournaments()
 {
     global $link;
     $sql = "SELECT * FROM TOURNAMENT";
@@ -68,7 +75,7 @@ function get_tournaments()
     return mysqli_query($link, $sql);
 }
 
-function get_tournament_by_id($id) 
+function get_tournament_by_id($id)
 {
     global $link;
     $sql = "SELECT * FROM TOURNAMENT" .
@@ -77,7 +84,7 @@ function get_tournament_by_id($id)
     return mysqli_query($link, $sql);
 }
 
-function get_tournament_cooragnizers($id) 
+function get_tournament_cooragnizers($id)
 {
     global $link;
     $sql = "SELECT * FROM TOURNAMENT_CO_ORGANIZER" .
@@ -86,7 +93,7 @@ function get_tournament_cooragnizers($id)
     return mysqli_query($link, $sql);
 }
 
-function delete_co_organizer($tournament_id, $co_organizer_id) 
+function delete_co_organizer($tournament_id, $co_organizer_id)
 {
     global $link;
     $query = "DELETE FROM TOURNAMENT_CO_ORGANIZER " .
@@ -97,7 +104,7 @@ function delete_co_organizer($tournament_id, $co_organizer_id)
     return mysqli_query($link, $query);
 }
 
-function get_officers() 
+function get_officers()
 {
     global $link;
     $sql = "SELECT * FROM OFFICER";
@@ -105,7 +112,7 @@ function get_officers()
     return mysqli_query($link, $sql);
 }
 
-function add_tournament_co_organizer($tournament_id, $co_organizer_id) 
+function add_tournament_co_organizer($tournament_id, $co_organizer_id)
 {
     global $link;
     $sql = "INSERT INTO TOURNAMENT_CO_ORGANIZER(TOURNAMENT_ID, CO_ORGANIZER_ID)" .
@@ -114,7 +121,7 @@ function add_tournament_co_organizer($tournament_id, $co_organizer_id)
     return mysqli_query($link, $sql);
 }
 
-function get_member_by_id($id) 
+function get_member_by_id($id)
 {
     global $link;
     $sql = "SELECT * FROM MEMBER" .
@@ -124,7 +131,7 @@ function get_member_by_id($id)
 }
 
 
-function create_event($event) 
+function create_event($event)
 {
     global $link;
     $query = "INSERT event(name, description, location, time, available_from, expires) VALUE (" .
@@ -138,7 +145,7 @@ function create_event($event)
     return mysqli_query($link, $query);
 }
 
-function create_tournament($tournament) 
+function create_tournament($tournament)
 {
     global $link;
     $sql = "INSERT INTO TOURNAMENT(NAME, INFO, SIGNUP_DEADLINE, ORGANIZER_ID) ";
@@ -148,11 +155,11 @@ function create_tournament($tournament)
     $sql .= "'" . $tournament['deadline'] . "',";
     $sql .= "'" . $tournament['organizer'] . "'";
     $sql .= ")";
-        
+
     return mysqli_query($link, $sql);
 }
 
-function edit_tournament($tournament) 
+function edit_tournament($tournament)
 {
     global $link;
     $sql = "UPDATE TOURNAMENT SET ";
@@ -166,41 +173,41 @@ function edit_tournament($tournament)
     return mysqli_query($link, $sql);
 }
 
-function delete_tournament($tournament_id) 
+function delete_tournament($tournament_id)
 {
     global $link;
     $sql = "DELETE FROM TOURNAMENT ";
     $sql .= "WHERE TOURNAMENT_ID='" . $tournament_id . "' ";
     $sql .= "LIMIT 1";
-    
+
     return mysqli_query($link, $sql);
-    
+
 }
 
 
-function get_news($options = []) 
+function get_news($options = [])
 {
     global $link;
     $query = "SELECT * FROM NEWS";
-    
-    if (isset($options['date'])) 
+
+    if (isset($options['date']))
     {
         $date = $options['date'];
         $query = $query . " WHERE THERELEASE < '" . $date .
         "' AND EXPIRY > '" . $date . "'";
     }
-    
+
     return mysqli_query($link, $query);
 }
 
-function get_news_by_id($NEWS_ID) 
+function get_news_by_id($NEWS_ID)
 {
     global $link;
     $query = "SELECT * FROM NEWS WHERE NEWS_ID=" . $NEWS_ID;
     return mysqli_query($link, $query);
 }
 
-function update_news($NEWS) 
+function update_news($NEWS)
 {
     global $link;
     $query = "UPDATE NEWS SET " .
@@ -211,7 +218,7 @@ function update_news($NEWS)
     return mysqli_query($link, $query);
 }
 
-function delete_news($NEWS_ID) 
+function delete_news($NEWS_ID)
 {
     global $link;
     $query = "DELETE FROM NEWS " .
@@ -220,14 +227,14 @@ function delete_news($NEWS_ID)
     return mysqli_query($link, $query);
 }
 
-function get_tournament_participants($id) 
+function get_tournament_participants($id)
 {
     global $link;
     $query = "SELECT PARTICIPANT_ID FROM TOURNAMENT_PARTICIPANT WHERE TOURNAMENT_ID='" . $id . "'";
     $result_set = mysqli_query($link, $query);
     $participants = [];
 
-    while($row = mysqli_fetch_assoc($result_set)) 
+    while($row = mysqli_fetch_assoc($result_set))
     {
         $participants[] = $row['PARTICIPANT_ID'];
     }
@@ -235,14 +242,14 @@ function get_tournament_participants($id)
     return $participants;
 }
 
-function get_tournaments_participated_in($id) 
+function get_tournaments_participated_in($id)
 {
     global $link;
     $query = "SELECT TOURNAMENT_ID FROM TOURNAMENT_PARTICIPANT WHERE PARTICIPANT_ID='" . $id . "'";
     $result_set = mysqli_query($link, $query);
     $tournaments = [];
 
-    while($row = mysqli_fetch_assoc($result_set)) 
+    while($row = mysqli_fetch_assoc($result_set))
     {
         $tournaments[] = $row['TOURNAMENT_ID'];
     }
@@ -250,7 +257,7 @@ function get_tournaments_participated_in($id)
     return $tournaments;
 }
 
-function insert_tournament_participant($tournament_id, $participant_id) 
+function insert_tournament_participant($tournament_id, $participant_id)
 {
     global $link;
     $query = "INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID) VALUE ('" .
