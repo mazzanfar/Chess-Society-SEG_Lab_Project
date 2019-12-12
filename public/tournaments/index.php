@@ -21,12 +21,20 @@ if(is_officer()){
     $result_set = get_tournaments();
     if (mysqli_num_rows($result_set)) {
         while ($tournament = mysqli_fetch_assoc($result_set)) {
+            $coorganizer_ids = Array();
+            $coorganizer_result_set = get_tournament_coorganizers($tournament['TOURNAMENT_ID']);
+            if ($coorganizer_result_set && mysqli_num_rows($result_set)) {
+                while ($coorganizer = mysqli_fetch_assoc($result_set)) {
+                    array_push($coorganizer_ids, $coorganizer["CO_ORGANIZER_ID"]);
+                }
+            }
+
             echo "<div class='content-item'>
             <p>" . $tournament["NAME"] . "</p>
             <p>" . $tournament["INFO"] . "</p>
             <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
 
-            if (is_logged_in() && (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"]) {
+            if (is_officer() && (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"]) {
                 echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
             }
 
@@ -39,9 +47,12 @@ if(is_officer()){
                       </form>";
             }
 
-            echo "<a href='./edit_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
-            <a href='./delete_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a>
-            </div>";
+            if (in_array($_SESSION['id'], $coorganizer_ids) || (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"]) {
+                echo "<a href='./edit_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
+                <a href='./delete_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a><br>
+                <a href='./view_participants.php?id=" . $tournament["TOURNAMENT_ID"] . "'>View participants</a>
+                </div>";
+            }
         }
     } else {
         echo "<p>The chess society currently has no upcoming tournaments</p>";
