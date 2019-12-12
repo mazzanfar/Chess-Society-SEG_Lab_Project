@@ -12,7 +12,7 @@ Baltimore
 - Sten Laane
 
 # Link to URL where the web application is deployed:
-TO DO // insert link here
+http://seg-lab2019-teambaltimore.dx.am/
 
 # For each type of role in your application, provide the access credentials (username and password) for a user with that role in the deployed/production version of your application:
 TO DO // insert credentials here
