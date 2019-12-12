@@ -25,8 +25,12 @@ if (is_officer()) {
             echo "<div class='content-item'>
                 <h2>" . $event["name"] . "</h2>
                 <span class='content-information'>Location: " . $event["location"] . "</span>
-                <br/>
-                <span class='content-information'>Time: " . $event["time"] . "</span>
+                <br/>";
+            if (is_officer()) {
+                echo "<span class='content-information'>Expires: " . $event["expires"] . "</span><br/>";
+                echo "<span class='content-information'>Available from: " . $event["available_from"] . "</span><br/>";
+            }
+            echo "<span class='content-information'>Time: " . $event["time"] . "</span>
                 <p>" . $event["description"] . "</p>";
             if (is_officer()) {
                 echo "<a class='admin-button' href='./edit.php?id=" . $event["id"] . "'>Edit</a>";
