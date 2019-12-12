@@ -84,7 +84,7 @@ function get_tournament_by_id($id)
     return mysqli_query($link, $sql);
 }
 
-function get_tournament_cooragnizers($id)
+function get_tournament_coorganizers($id)
 {
     global $link;
     $sql = "SELECT * FROM TOURNAMENT_CO_ORGANIZER" .
@@ -107,7 +107,7 @@ function delete_co_organizer($tournament_id, $co_organizer_id)
 function get_officers()
 {
     global $link;
-    $sql = "SELECT * FROM OFFICER";
+    $sql = "SELECT * FROM users WHERE is_officer = true";
 
     return mysqli_query($link, $sql);
 }
