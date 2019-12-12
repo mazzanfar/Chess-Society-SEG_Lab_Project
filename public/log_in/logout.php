@@ -7,7 +7,7 @@ $_SESSION = array();
 session_destroy();
  
 // Redirect to home page
-redirect_to("/index.php");
+redirect_to("index.php");
 ?>
 
 

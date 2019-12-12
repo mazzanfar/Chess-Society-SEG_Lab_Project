@@ -63,13 +63,13 @@ function is_logged_in() {
 
 function require_login() {
     if (!is_logged_in()) {
-        redirect_to("/index.php");
+        redirect_to("index.php");
     }
 }
 
 function require_officer() {
     if (!is_officer()) {
-        redirect_to("/index.php");
+        redirect_to("index.php");
     }
 }
 ?>

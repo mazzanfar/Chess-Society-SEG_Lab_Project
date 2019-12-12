@@ -4,7 +4,7 @@ require_once("../../private/initialise.php");
 include("../../private/shared/chess_header.php");
 
 if(is_logged_in()){
-    redirect_to("/index.php");
+    redirect_to("index.php");
 }
 
 // Define variables and initialize with empty values
@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
         // Prepare an insert statement
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        redirect_to("/index.php");
+        redirect_to("index.php");
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                redirect_to("log_in/login.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -95,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

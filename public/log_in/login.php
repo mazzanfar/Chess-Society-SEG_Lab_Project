@@ -6,7 +6,7 @@ include("../../private/shared/chess_header.php");
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(is_logged_in()){
-    redirect_to("/index.php");
+    redirect_to("index.php");
 }
 
 
@@ -62,7 +62,7 @@ if(is_post_request()){
                             $_SESSION["is_officer"] = $is_officer;
 
                             // Redirect user to welcome page
-                            redirect_to("/index.php");
+                            redirect_to("index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
