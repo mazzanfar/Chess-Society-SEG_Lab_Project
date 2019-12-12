@@ -15,7 +15,19 @@ Baltimore
 http://seg-lab2019-teambaltimore.dx.am/
 
 # For each type of role in your application, provide the access credentials (username and password) for a user with that role in the deployed/production version of your application:
-TO DO // insert credentials here
+
+Member:
+- Set any username and password when you register. 
+
+Officer:
+- same as admin (see below)
+
+Organiser:
+- same as admin (see below). An officer becomes an organiser when they create a tournament.
+
+Admin:
+- Username: admin
+- Password: admin123
 
 # Any significant amount code that was reused must be declared.  It is understood that your team will have completed the recommended training materials and that the examples used in those training videos will have inspired some of your code. If so, it is sufficient to add a single sentence that that all the code has borrowed ideas from the recommended training videos. If you have copied substantial amounts of other code into your application, this should be specified clearly, including the source, the number of lines of code reused and the location where it is reused.
 All the code has borrowed ideas from the recommend training videos. 
