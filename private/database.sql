@@ -6,10 +6,12 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     is_officer BOOLEAN DEFAULT FALSE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    full_name VARCHAR(255) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    gender VARCHAR(15) NOT NULL,
-    age DATE NOT NULL
+    full_name VARCHAR(255),
+    address VARCHAR(255),
+    gender VARCHAR(15),
+    phone VARCHAR(15),
+    dob DATE,
+    elo INT DEFAULT 0
 );
 
 CREATE TABLE event(
