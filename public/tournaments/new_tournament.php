@@ -2,13 +2,17 @@
 require_once "../../private/initialise.php";
 
 require_officer();
+$validation_result = true;
 if(is_post_request()) {
     $tournament['name'] = $_POST['name'];
     $tournament['info'] = $_POST['info'];
     $tournament['deadline'] = $_POST['deadline'];
     $tournament['organizer'] = $_POST['organizer'];
-    create_tournament($tournament);
-    redirect_to("tournaments/index.php");
+    $validation_result = validate_tournament($tournament);
+    if ($validation_result === true) {
+        create_tournament($tournament);
+        redirect_to("tournaments/index.php");
+    }
 }
 ?>
 <html>
@@ -23,6 +27,14 @@ if(is_post_request()) {
 
 <h2>New Tournament</h2>
 <a href="index.php">Cancel</a>
+<?php if ($validation_result !== true) {
+    echo "<div class='validation-errors'>";
+    foreach ($validation_result as $error) {
+        echo "<p class='validation-error'>" . $error . "</p>";
+    }
+    echo "</div>";
+}
+?>
 <form class="content-form" action="new_tournament.php" method="post">
     <label class="content-form-input">Name
         <input class="content-form-input" type="text" name="name" placeholder="Tournament Name">
@@ -36,8 +48,17 @@ if(is_post_request()) {
         <input class="content-form-input" type="datetime-local" name="deadline">
     </label>
     <br/>
-    <label class="content-form-input">Organizer ID
-        <input class="content-form-input" type="text" name="organizer" placeholder="Organizer ID">
+    <label>
+        Organizer id:
+        <?php $result_set = get_officers()?>
+        <select name="organizer">
+            <?php
+            while ($officer = mysqli_fetch_assoc($result_set)) {
+                $officer_id = $officer["id"];
+                echo "<option value=' " . $officer_id . "'>" . $officer_id . "</option>";
+            }
+            ?>
+        </select>
     </label>
     <br/>
     <input type="submit">

@@ -26,7 +26,7 @@ if(is_officer()){
             <p>" . $tournament["INFO"] . "</p>
             <p>Signup deadline: " . $tournament["SIGNUP_DEADLINE"] . "</p>";
 
-            if (is_logged_in() && $_SESSION["id"] === $tournament["ORGANIZER_ID"]) {
+            if (is_logged_in() && (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"]) {
                 echo "<a href='./co_organizer.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit co-organizers</a><br/>";
             }
 
