@@ -7,9 +7,10 @@ if (is_post_request()) {
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $address = $_POST['address'];
+    $phone = $_POST['phone'];
 
     $query = "UPDATE users SET full_name = '$fullname',
-                      gender = '$gender', dob = '$dob', address = '$address'
+                      gender = '$gender', dob = '$dob', address = '$address', phone ='$phone'
                       WHERE id = '$id'";
     $update_profile = mysqli_query($link, $query);
     redirect_to("user/profile.php");
@@ -50,6 +51,8 @@ $user_data = $get_user->fetch_assoc();
         Other
     </label><br/>
 
+    <label>Phone:</label><br>
+    <input type="text" name="phone" value="<?php echo $user_data['phone'] ?>"/><br><br>
     <label>Address:</label><br>
     <input type="text" name="address" value="<?php echo $user_data['address'] ?>"/><br><br>
     <input type="submit" value="Update Profile"/>

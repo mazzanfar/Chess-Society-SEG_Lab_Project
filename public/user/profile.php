@@ -20,19 +20,25 @@ $profile_data = $get_user->fetch_assoc();
 <body>
     <?php include("../../private/shared/chess_header.php"); ?>
     <h3>Personal Information</h3>
-    <?php if (!isset($_GET['id'])) { // can only edit own profile
+    <?php if (!isset($_GET['id']) || (int) $_GET['id'] === (int) $_SESSION['id']) { // can only edit own profile
         echo '<a href="edit-profile.php">Edit Profile</a><br/>';
     } ?>
-    <a href="tournament_history.php">My tournament history</a>
+    <a href="tournament_history.php?id= <?php echo $id ?>">Tournament history</a>
         <table>
                     <tr>                
                     	<td>Name:</td><td><?php echo $profile_data['full_name'] ?? "No name set" ?></td>
+                    </tr>
+                    <tr>
+                        <td>Elo:</td><td><?php echo $profile_data['elo'] ?></td>
                     </tr>
                     <tr>                
                     	<td>Age:</td><td><?php echo $profile_data['dob']   ?? "No date of birth set" ?></td>
                     </tr> 
                     <tr>
                         <td>Gender:</td><td><?php echo $profile_data['gender'] ?? "No gender set" ?></td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td><td><?php echo $profile_data['phone'] ?? "No phone set" ?></td>
                     </tr>
                     <tr>
                         <td>Address:</td><td><?php echo $profile_data['address'] ?? "No address set" ?></td>
