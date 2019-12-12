@@ -1,6 +1,6 @@
 <?php
 require_once "../../private/initialise.php";
-
+require_officer();
 if(is_post_request()) {
     $delete = $_POST['delete'];
     if ($delete === "yes") {
@@ -16,8 +16,12 @@ if(is_post_request()) {
 <html>
 <head>
     <title>Chess Society Tournaments</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
+<?php include("../../private/shared/chess_header.php") ?>
+
     <h3><?php echo "Delete tournament with id '" . $tournament_id . "' ?"?></h3>
     <a href="index.php">Back</a>
     <form action="delete_tournament.php" method="post">

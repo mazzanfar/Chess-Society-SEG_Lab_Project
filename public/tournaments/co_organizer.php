@@ -1,11 +1,11 @@
 <?php
 require_once "../../private/initialise.php";
-
+require_officer();
 if (is_post_request()) {
     $tournament_id = $_POST['tournament_id'];
     $co_organizer_id = $_POST['co_organizer_id'];
     add_tournament_co_organizer($tournament_id, $co_organizer_id);
-    redirect_to("tournaments/co_organizer.php");
+    redirect_to("tournaments/co_organizer.php?id=" . $tournament_id);
 } else {
     $id = $_GET['id'] ?? 1;
     $result_set = get_tournament_by_id($id);
@@ -18,14 +18,19 @@ if (is_post_request()) {
 
 <html>
 <head>
-    <title>Chess society tournaments</title>
+    <title>Chess Society Tournaments</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
-<h1><?php echo "Editing tournament id '" . $id . "'" ?></h1>
+<?php include("../../private/shared/chess_header.php"); ?>
+
+<h1><?php echo "Editing tournament id '" . $id . "' co-organizers" ?></h1>
 <a href="index.php">Back</a>
 <?php
 if (empty($tournament)) {
     echo "<p>No tournament with id " . $id . " found</p>";
+    exit;
 }
 
 ?>
@@ -33,7 +38,7 @@ if (empty($tournament)) {
     <?php
     $coorganizer_ids = Array();
 
-    $result_set = get_tournament_cooragnizers($id);
+    $result_set = get_tournament_coorganizers($id);
     if ($result_set && mysqli_num_rows($result_set)) {
         echo "<table>";
         $headers = true;
@@ -54,31 +59,35 @@ if (empty($tournament)) {
         }
         echo "<table>";
     } else if ($result_set) {
-        echo "<p>The tournament currently has no members co-organizers </p>";
+        echo "<p>The tournament currently has no co-organizers </p>";
     }
     ?>
 </div>
 
-<form action="co_organizer.php" method="post">
-    <label>
-        Add co-organizer:
-        <?php $result_set = get_officers()?>
-        <select name="co_organizer_id">
-            <?php
-            while ($officer = mysqli_fetch_assoc($result_set)) {
-                $officer_id = $officer["OFFICER_ID"];
-                if (!in_array($officer_id, $coorganizer_ids) && $tournament['ORGANIZER_ID'] !== $officer_id) {
-                    echo "<option value=' " . $officer_id . "'>" . $officer_id . "</option>";
-                }
-            }
-            ?>
-        </select>
-    </label>
-    <input name="tournament_id" value="<?php echo $tournament['TOURNAMENT_ID'] ?>" hidden>
-    <br/>
-    <input type="submit">
 
-</form>
+<?php $result_set = get_officers();
+if (mysqli_num_rows($result_set) - 1 != sizeof($coorganizer_ids)) { // otherwise all officers are co-organizers
+    echo '<form action="co_organizer.php" method="post">
+            <label> Add co-organizer:
+            <select name = "co_organizer_id" >';
+    while ($officer = mysqli_fetch_assoc($result_set)) {
+        $officer_id = $officer["id"];
+        if (!in_array($officer_id, $coorganizer_ids) && $tournament['ORGANIZER_ID'] !== $officer_id) {
+            echo "<option value=' " . $officer_id . "'>" . $officer_id . "</option>";
+        }
+    }
+    echo '</select>
+            </label>
+            <input name="tournament_id" value="' . $tournament['TOURNAMENT_ID'] .  '" hidden>
+            <br/>
+            <input type="submit">
+    </form>';
+} else {
+    echo "<p>All officers are already this tournament's organizers</p>";
+}
+
+?>
+
 
 </body>
 </html>
