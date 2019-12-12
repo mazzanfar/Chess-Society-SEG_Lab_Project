@@ -10,7 +10,7 @@ function get_events($options = [])
 {
     global $link;
     $query = "SELECT * FROM event";
-    if (isset($options['date']))
+    if (isset($options['date']) && !is_officer()) // admins can see expired events
     {
         $date = $options['date'];
         $query = $query . " WHERE available_from < '" . $date .
@@ -263,6 +263,22 @@ function insert_tournament_participant($tournament_id, $participant_id)
     $query = "INSERT INTO TOURNAMENT_PARTICIPANT(TOURNAMENT_ID, PARTICIPANT_ID) VALUE ('" .
             $tournament_id . "', '" . $participant_id . "')";
     return mysqli_query($link, $query);
+}
+
+function get_elo($id) {
+    global $link;
+    $query = "SELECT elo FROM users WHERE id='" . $id . "'";
+    $result_set = mysqli_query($link, $query);
+    $row = mysqli_fetch_assoc($result_set);
+    return $row['elo'];
+}
+
+function update_elo($id, $elo) {
+    global $link;
+    $query = "UPDATE users SET elo = '" . $elo . "' WHERE id='" . $id . "'";
+    $result_set = mysqli_query($link, $query);
+    $row = mysqli_fetch_assoc($result_set);
+    return $row['elo'];
 }
 
 ?>

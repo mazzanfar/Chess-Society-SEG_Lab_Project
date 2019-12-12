@@ -27,7 +27,9 @@ require_officer();
                 <th class='user-column'>Member ID</th>
                 <th class='user-column'>Username</th>
                 <th class='user-column'>Name</th>
+                <th class='user-column'>Elo</th>
                 <th class='user-column'>Profile</th>
+                <th class='user-column'/>
                 </tr>";
                 $headers = false;
             }
@@ -35,7 +37,9 @@ require_officer();
             <td>" . $user["id"] . "</td>
             <td>" . $user["username"] . "</td>
             <td>" . $user["full_name"] . "</td>
+            <td>" . $user["elo"] . "</td>
             <td><a href='../user/profile.php?id=" . $user["id"] . "'>View</a></td>
+            <td><a href='edit_elo.php?id=" . $user["id"] . "'>Edit elo</a></td>
             </tr>";
         }
         echo "<table>";
