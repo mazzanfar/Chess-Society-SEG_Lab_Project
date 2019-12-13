@@ -105,6 +105,28 @@ function validate_profile($profile) {
     }
 }
 
+function validate_news($NEWS) {
+    $errors = [];
+    if ($NEWS['INFO'] === '') {
+        $errors[] = "News information can not be blank.";
+    }
+
+    if (!is_valid_date($NEWS['THERELEASE'])) {
+        $errors[] = "Time is not a valid date/time combination";
+    }
+
+    if (!is_valid_date($NEWS['EXPIRY'])) {
+        $errors[] = "Time is not a valid date/time combination";
+    }
+
+    if (empty($errors)) {
+        return true;
+    } else {
+        return $errors;
+    }
+}
+
+
 function get_validation_errors($validation_result) {
     $errors = "";
     if ($validation_result !== true) {

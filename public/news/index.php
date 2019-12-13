@@ -22,9 +22,13 @@ if(is_officer()){
         while ($NEWS = mysqli_fetch_assoc($result_set)) {
             echo "<div class='content-item'>
                 <p>" . $NEWS["INFO"] . "</p>";
+                if (is_officer()) {
+                    echo "<span class='content-information'>Expires: " . $NEWS["EXPIRY"] . "</span><br/>";
+                    echo "<span class='content-information'>Available from: " . $NEWS["THERELEASE"] . "</span><br/>";
+                }
                 if(is_officer()){
-                    echo "<a class='admin-button' href='./edit.php?id=" . $NEWS["NEWS_ID"] . "'>Edit</a>
-                            <a class='admin-button' href='./delete.php?id=" . $NEWS["NEWS_ID"]. "'>Delete</a>";
+                    echo "<a class='admin-button' href='./edit.php?id=" . $NEWS['NEWS_ID'] . "'>Edit</a>
+                            <a class='admin-button' href='./delete.php?id=" . $NEWS['NEWS_ID']. "'>Delete</a>";
                 }
 
                 

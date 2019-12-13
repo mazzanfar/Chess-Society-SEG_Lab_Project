@@ -184,6 +184,17 @@ function delete_tournament($tournament_id)
 
 }
 
+function create_news($NEWS)
+{
+    global $link;
+    $query = "INSERT INTO NEWS(INFO, THERELEASE, EXPIRY) VALUE (" .
+        "'" . $NEWS['INFO'] . "', " .
+        "'" . $NEWS['THERELEASE'] . "', " .
+        "'" . $NEWS['EXPIRY'] .
+        "')";
+    return mysqli_query($link, $query);
+}
+
 
 function get_news($options = [])
 {
@@ -215,6 +226,7 @@ function update_news($NEWS)
     " THERELEASE = '" . $NEWS['THERELEASE'] . "'," .
     " EXPIRY = '" . $NEWS['EXPIRY'] . "'" .
     " WHERE NEWS_ID='" . $NEWS['NEWS_ID'] . "'";
+    echo $query;
     return mysqli_query($link, $query);
 }
 

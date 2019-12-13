@@ -8,7 +8,7 @@ if (is_post_request()) {
     }
     redirect_to("news/index.php");
 } else {
-    $NEWS_ID = $_GET['NEWS_ID'] ?? 1;
+    $NEWS_ID = $_GET['id'] ?? 1;
     $result_set = get_news_by_id($NEWS_ID);
     $NEWS = mysqli_fetch_assoc($result_set);
     mysqli_free_result($result_set);
