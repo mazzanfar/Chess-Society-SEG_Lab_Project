@@ -6,7 +6,7 @@
     <a class="header-link" href="../../public/news/index.php">NEWS</a>
     <a class="header-link" href="../../public/tournaments/index.php">TOURNAMENTS</a>
     </div>
-    <div class="header-right-nav">;
+    <div class="header-right-nav">
     <?php if (is_logged_in()) {
         if (is_officer()) {
             echo '<a class="header-link" href="../../public/admin/index.php">Admin page</a>';

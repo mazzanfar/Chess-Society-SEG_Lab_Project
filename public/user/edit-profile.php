@@ -27,7 +27,6 @@ $user_data = $get_user->fetch_assoc();
     <meta charset="UTF-8">
     <title><?php echo $user_data['username'] ?>'s Profile Settings</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php"); ?>

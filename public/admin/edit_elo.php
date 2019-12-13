@@ -21,9 +21,8 @@ $elo = get_elo($id);
 
 <html>
 <head>
-    <title>Chess society events</title>
+    <title>Chess society admin</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php") ?>

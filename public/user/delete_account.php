@@ -14,9 +14,8 @@
 
 <html>
    <head>
-       <title>Remove Account</title>
+       <title>Chess society profile</title>
        <?php require_once("../../private/shared/chess_head.php") ?>
-       <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
    </head>
    <body>
    <?php include("../../private/shared/chess_header.php"); ?>

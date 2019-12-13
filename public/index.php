@@ -8,7 +8,6 @@ require_once("../private/initialise.php");
     <title>Chess Society</title>
     <meta charset="utf-8">
     <?php require_once("../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="stylesheets/content.css" type="text/css">
 </head>
 
 <body>

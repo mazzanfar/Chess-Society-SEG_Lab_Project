@@ -104,3 +104,12 @@ h2 {
 footer {
     margin: 2rem;
 }
+
+.wrapper {
+    width: 350px;
+    padding: 20px;
+}
+
+.help-block {
+    color: red;
+}

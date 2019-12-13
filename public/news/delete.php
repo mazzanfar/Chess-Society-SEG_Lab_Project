@@ -18,6 +18,7 @@ if (is_post_request()) {
 <html>
 <head>
     <title>Chess society news</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
 </head>
 <body>
 <h1><?php echo "Delete news \"" . $NEWS['INFO'] ."\"?" ?></h1>

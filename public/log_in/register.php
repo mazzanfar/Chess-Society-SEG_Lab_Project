@@ -100,9 +100,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Chess society register</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/login.css" type="text/css">
 </head>
 <body>
     <div class="wrapper">

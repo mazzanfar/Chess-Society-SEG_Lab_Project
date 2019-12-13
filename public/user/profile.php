@@ -15,7 +15,6 @@ $profile_data = mysqli_fetch_assoc($result_set);
 	<meta charset="UTF-8">
     <?php require_once("../../private/shared/chess_head.php") ?>
     <title><?php echo $profile_data['username'] ?>'s Profile</title>
-    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
     <?php include("../../private/shared/chess_header.php"); ?>

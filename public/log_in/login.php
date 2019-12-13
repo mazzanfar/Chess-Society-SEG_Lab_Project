@@ -90,7 +90,6 @@ if(is_post_request()){
     <meta charset="UTF-8">
     <title>Chess society login</title>
     <?php require_once("../../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="../stylesheets/login.css" type="text/css">
 </head>
 <body>
     <div class="wrapper">
