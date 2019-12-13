@@ -290,4 +290,10 @@ function update_profile($profile) {
     return mysqli_query($link, $query);
 }
 
+function get_user($id) {
+    global $link;
+    $query = "SELECT * FROM users WHERE id ='" . $id . "'";
+    return mysqli_query($link, $query);
+}
+
 ?>
