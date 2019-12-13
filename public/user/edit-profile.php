@@ -3,16 +3,13 @@ require_once("../../private/initialise.php");
 require_login();
 $id = $_SESSION['id'];
 if (is_post_request()) {
-    $fullname = $_POST['fullname'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
+    $profile["full_name"] = $_POST['fullname'];
+    $profile["dob"] = $_POST['dob'];
+    $profile["gender"] = $_POST['gender'];
+    $profile["address"] = $_POST['address'];
+    $profile["phone"] = $_POST['phone'];
 
-    $query = "UPDATE users SET full_name = '$fullname',
-                      gender = '$gender', dob = '$dob', address = '$address', phone ='$phone'
-                      WHERE id = '$id'";
-    $update_profile = mysqli_query($link, $query);
+    update_profile($profile);
     redirect_to("user/profile.php");
 }
 
@@ -34,7 +31,7 @@ $user_data = $get_user->fetch_assoc();
 
     <label>Name:</label><br>
     <input type="text" name="fullname" value="<?php echo $user_data['full_name'] ?>"/><br>
-    <label>Age:</label><br>
+    <label>Date of birth:</label><br>
     <input type="date" name="dob" value="<?php echo $user_data['dob'] ?>"/><br>
 
     <label>Gender:</label><br>

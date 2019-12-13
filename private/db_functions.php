@@ -281,4 +281,13 @@ function update_elo($id, $elo) {
     return $row['elo'];
 }
 
+function update_profile($profile) {
+    global $link;
+    $query = "UPDATE users SET full_name = '" . $profile["full_name"] .
+        "', gender = '" . $profile["gender"] . "', dob = '" . $profile["dob"] .
+        "', address = '" . $profile["address"] . "', phone ='" . $profile["phone"] .
+        "' WHERE id = '" . $profile["id"] . "'";
+    return mysqli_query($link, $query);
+}
+
 ?>

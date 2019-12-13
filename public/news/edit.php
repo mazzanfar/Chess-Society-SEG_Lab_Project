@@ -1,4 +1,3 @@
-
 <?php
 require_once "../../private/initialise.php";
 if (is_post_request()) {
