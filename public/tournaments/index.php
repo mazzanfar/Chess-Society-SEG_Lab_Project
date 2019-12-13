@@ -16,7 +16,7 @@ if(is_officer()){
 }
 ?>
 
-<div id="content">
+<div class="content">
     <?php
     $result_set = get_tournaments();
     if (mysqli_num_rows($result_set)) {
@@ -47,7 +47,7 @@ if(is_officer()){
                       </form>";
             }
 
-            if (in_array($_SESSION['id'], $coorganizer_ids) || (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"]) {
+            if (is_logged_in() && (in_array($_SESSION['id'], $coorganizer_ids) || (int) $_SESSION["id"] === (int) $tournament["ORGANIZER_ID"])) {
                 echo "<a href='./edit_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Edit</a>
                 <a href='./delete_tournament.php?id=" . $tournament["TOURNAMENT_ID"] . "'>Delete</a><br>
                 <a href='./view_participants.php?id=" . $tournament["TOURNAMENT_ID"] . "'>View participants</a>

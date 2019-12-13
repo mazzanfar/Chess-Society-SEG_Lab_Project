@@ -15,7 +15,7 @@ require_login();
 <h1>My tournaments</h1>
 <br/>
 
-<div id="content">
+<div class="content">
     <?php
     $tournaments = get_tournaments_participated_in($_SESSION['id']);
     if (count($tournaments) > 0) {

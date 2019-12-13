@@ -8,12 +8,12 @@ require_once("../private/initialise.php");
     <title>Chess Society</title>
     <meta charset="utf-8">
     <?php require_once("../private/shared/chess_head.php") ?>
-    <link rel="stylesheet" href="stylesheets/home.css" type="text/css">
+    <link rel="stylesheet" href="stylesheets/content.css" type="text/css">
 </head>
 
 <body>
     <?php include("../private/shared/chess_header.php"); ?>
-    <div class="content">
+    <div class="introduction">
     <h2>Who are we?</h2>
         <p>
         Whether you’re the next Magnus Carlsen or a complete beginner just hoping to learn the rules of chess, the chess

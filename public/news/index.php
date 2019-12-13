@@ -15,7 +15,7 @@ if(is_officer()){
 }
 ?>
 
-<div id="content">
+<div class="content">
     <?php
     $date = date("Y-m-d H:i:s");
     $result_set = get_news(["date" => $date]);

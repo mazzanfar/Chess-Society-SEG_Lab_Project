@@ -1,7 +1,8 @@
-#content {
+.content {
     padding: 2rem 0 0 0;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -9,8 +10,9 @@
     border: #333333 solid 1px;
     border-radius: 25px;
     padding: 1.2rem;
+    margin: 2rem 0;
     width: 400px;
-    height: 200px;
+    min-height: 200px;
 }
 
 .content-information {
@@ -52,4 +54,53 @@ h2 {
 
 .user-column {
     padding: 0 40px 0 0;
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    width: 50vw;
+}
+
+.header-title {
+    text-align: center;
+    background-color: #CC7178;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.header-title a {
+    color: white
+}
+
+.header-title a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style the top navigation bar */
+.header-nav {
+    display: flex;
+    background-color: #89023E;
+    padding: 0.5rem;
+    justify-content: space-between;
+}
+
+/* Style the navigation links */
+.header-link {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0.5rem 16px;
+}
+
+/* Change color on hover */
+.header-nav a:hover {
+    background-color: #9e0447;
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    margin: 2rem;
 }
