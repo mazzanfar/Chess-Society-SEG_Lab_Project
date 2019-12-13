@@ -32,14 +32,7 @@ if (is_post_request()) {
 <div class="content-inner">
 <h2>New event</h2>
 <a href="index.php">Back</a>
-<?php if ($validation_result !== true) {
-    echo "<div class='validation-errors'>";
-    foreach ($validation_result as $error) {
-        echo "<p class='validation-error'>" . $error . "</p>";
-    }
-    echo "</div>";
-
-}?>
+<?php echo get_validation_errors($validation_result); ?>
 <form action="new.php" class="content-form" method="post">
     <label class="content-form-input">
         Name

@@ -105,4 +105,16 @@ function validate_profile($profile) {
     }
 }
 
+function get_validation_errors($validation_result) {
+    $errors = "";
+    if ($validation_result !== true) {
+        $errors .= "<div class='validation-errors'>";
+        foreach ($validation_result as $error) {
+            $errors .= "<p class='validation-error'>" . $error . "</p>";
+        }
+        $errors .= "</div>";
+    }
+    return $errors;
+}
+
 ?>

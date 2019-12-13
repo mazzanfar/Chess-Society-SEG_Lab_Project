@@ -32,14 +32,8 @@ mysqli_free_result($result_set);
     <div class="content-inner">
     <h1><?php echo "Editing \"" . $tournament['NAME'] ."\"" ?></h1>
     <a href="index.php">Back</a>
-    <?php if ($validation_result !== true) {
-        echo "<div class='validation-errors'>";
-        foreach ($validation_result as $error) {
-            echo "<p class='validation-error'>" . $error . "</p>";
-        }
-        echo "</div>";
-    }
-    ?>
+    <?php echo get_validation_errors($validation_result); ?>
+
     <form class="content-form" action="edit_tournament.php" method="post">
         <label class="content-form-input">Name
             <input class="content-form-input" type="text" name="name" value="<?php echo $tournament['NAME'] ?>">

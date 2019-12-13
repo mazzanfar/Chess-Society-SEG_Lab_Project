@@ -33,14 +33,7 @@ $user_data = $get_user->fetch_assoc();
 <?php include("../../private/shared/chess_header.php"); ?>
 <h3>Update Profile Information</h3>
 <a href="../">Back to profile</a>
-<?php if ($validation_result !== true) {
-    echo "<div class='validation-errors'>";
-    foreach ($validation_result as $error) {
-        echo "<p class='validation-error'>" . $error . "</p>";
-    }
-    echo "</div>";
-
-}?>
+<?php echo get_validation_errors($validation_result); ?>
 <form method="post" class="content-form">
 
     <label>Name:</label><br>

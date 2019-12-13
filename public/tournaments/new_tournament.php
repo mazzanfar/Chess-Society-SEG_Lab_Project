@@ -27,14 +27,7 @@ if(is_post_request()) {
 
 <h2>New Tournament</h2>
 <a href="index.php">Cancel</a>
-<?php if ($validation_result !== true) {
-    echo "<div class='validation-errors'>";
-    foreach ($validation_result as $error) {
-        echo "<p class='validation-error'>" . $error . "</p>";
-    }
-    echo "</div>";
-}
-?>
+<?php echo get_validation_errors($validation_result); ?>
 <form class="content-form" action="new_tournament.php" method="post">
     <label class="content-form-input">Name
         <input class="content-form-input" type="text" name="name" placeholder="Tournament Name">
