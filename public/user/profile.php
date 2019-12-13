@@ -23,7 +23,7 @@ $profile_data = $get_user->fetch_assoc();
     <?php if (!isset($_GET['id']) || (int) $_GET['id'] === (int) $_SESSION['id']) { // can only edit own profile
         echo '<a href="edit-profile.php">Edit Profile</a><br/>';
     } ?>
-    <a href="tournament_history.php?id= <?php echo $id ?>">Tournament history</a>
+    <a href="tournament_history.php?id=<?php echo $id ?>">Tournament history</a>
         <table>
                     <tr>                
                     	<td>Name:</td><td><?php echo $profile_data['full_name'] ?? "No name set" ?></td>
@@ -32,7 +32,7 @@ $profile_data = $get_user->fetch_assoc();
                         <td>Elo:</td><td><?php echo $profile_data['elo'] ?></td>
                     </tr>
                     <tr>                
-                    	<td>Age:</td><td><?php echo $profile_data['dob']   ?? "No date of birth set" ?></td>
+                    	<td>Date of birth:</td><td><?php echo $profile_data['dob']   ?? "No date of birth set" ?></td>
                     </tr> 
                     <tr>
                         <td>Gender:</td><td><?php echo $profile_data['gender'] ?? "No gender set" ?></td>
@@ -44,6 +44,8 @@ $profile_data = $get_user->fetch_assoc();
                         <td>Address:</td><td><?php echo $profile_data['address'] ?? "No address set" ?></td>
                     </tr>        
         </table>
-    <a href="delete_account.php">Delete my account</a>
+    <?php if (!isset($_GET['id']) || (int) $_GET['id'] === (int) $_SESSION['id']) { // can only edit own profile
+        echo '<a href="delete_account.php">Delete my account</a>';
+    } ?>
     </body>
 </html>

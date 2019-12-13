@@ -2,15 +2,20 @@
 require_once("../../private/initialise.php");
 require_login();
 $id = $_SESSION['id'];
+$validation_result = true;
 if (is_post_request()) {
     $profile["full_name"] = $_POST['fullname'];
     $profile["dob"] = $_POST['dob'];
     $profile["gender"] = $_POST['gender'];
     $profile["address"] = $_POST['address'];
     $profile["phone"] = $_POST['phone'];
+    $profile["id"] = $id;
 
-    update_profile($profile);
-    redirect_to("user/profile.php");
+    $validation_result = validate_profile($profile);
+    if ($validation_result === true) {
+        update_profile($profile);
+        redirect_to("user/profile.php");
+    }
 }
 
 $get_user = mysqli_query($link, "SELECT * FROM users WHERE id = '" . $id . "'");
@@ -20,13 +25,22 @@ $user_data = $get_user->fetch_assoc();
 <html>
 <head>
     <meta charset="UTF-8">
-    <?php require_once("../../private/shared/chess_head.php") ?>
     <title><?php echo $user_data['username'] ?>'s Profile Settings</title>
+    <?php require_once("../../private/shared/chess_head.php") ?>
+    <link rel="stylesheet" href="../stylesheets/content.css" type="text/css">
 </head>
 <body>
 <?php include("../../private/shared/chess_header.php"); ?>
 <h3>Update Profile Information</h3>
 <a href="../">Back to profile</a>
+<?php if ($validation_result !== true) {
+    echo "<div class='validation-errors'>";
+    foreach ($validation_result as $error) {
+        echo "<p class='validation-error'>" . $error . "</p>";
+    }
+    echo "</div>";
+
+}?>
 <form method="post" class="content-form">
 
     <label>Name:</label><br>

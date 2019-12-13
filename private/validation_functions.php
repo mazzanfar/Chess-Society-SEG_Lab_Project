@@ -75,4 +75,34 @@ function validate_elo($elo) {
     }
 }
 
+function validate_profile($profile) {
+    $errors = [];
+    if ($profile['full_name'] === '') {
+        $errors[] = "Name can not be blank.";
+    }
+
+    if (!is_valid_date($profile['dob'])) {
+        $errors[] = "Date of birth is not a valid date/time combination";
+    }
+
+    if ($profile['gender'] === '') {
+        $errors[] = "Gender must be selected.";
+    }
+
+    if ($profile['address'] === '') {
+        $errors[] = "Address can not be blank.";
+    }
+
+    if ($profile['phone'] === '') {
+        $errors[] = "Phone can not be blank.";
+    }
+
+
+    if (empty($errors)) {
+        return true;
+    } else {
+        return $errors;
+    }
+}
+
 ?>

@@ -17,7 +17,7 @@ if (is_post_request()) {
 
 <html>
 <head>
-    <title>Chess society news   </title>
+    <title>Chess society news</title>
 </head>
 <body>
     <h1><?php echo "Editing \"" . $NEWS['INFO'] ."\"" ?></h1>
