@@ -46,7 +46,7 @@ if (is_post_request()) {
         </label>
         <br/>
         <label>
-            release time
+            Release time
             <input type="datetime-local" name="THERELEASE" value="<?php echo mysql_date_to_html_date($NEWS['THERELEASE']) ?>">
         </label>
         <br/>

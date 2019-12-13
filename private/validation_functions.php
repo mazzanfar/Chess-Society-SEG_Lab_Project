@@ -23,11 +23,11 @@ function validate_event($event) {
     }
 
     if (!is_valid_date($event['available_from'])) {
-        $errors[] = "Time is not a valid date/time combination";
+        $errors[] = "Available from is not a valid date/time combination";
     }
 
     if (!is_valid_date($event['expires'])) {
-        $errors[] = "Time is not a valid date/time combination";
+        $errors[] = "Expires is not a valid date/time combination";
     }
 
     if (empty($errors)) {
@@ -112,11 +112,11 @@ function validate_news($NEWS) {
     }
 
     if (!is_valid_date($NEWS['THERELEASE'])) {
-        $errors[] = "Time is not a valid date/time combination";
+        $errors[] = "Release is not a valid date/time combination";
     }
 
     if (!is_valid_date($NEWS['EXPIRY'])) {
-        $errors[] = "Time is not a valid date/time combination";
+        $errors[] = "Expiry is not a valid date/time combination";
     }
 
     if (empty($errors)) {

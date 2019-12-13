@@ -21,6 +21,7 @@ if (is_post_request()) {
     <?php require_once("../../private/shared/chess_head.php") ?>
 </head>
 <body>
+<?php include("../../private/shared/chess_header.php") ?>
 <h1><?php echo "Delete news \"" . $NEWS['INFO'] ."\"?" ?></h1>
 <a href="index.php">Back</a>
 <form action="delete.php" method="post">

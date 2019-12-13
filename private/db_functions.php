@@ -226,7 +226,6 @@ function update_news($NEWS)
     " THERELEASE = '" . $NEWS['THERELEASE'] . "'," .
     " EXPIRY = '" . $NEWS['EXPIRY'] . "'" .
     " WHERE NEWS_ID='" . $NEWS['NEWS_ID'] . "'";
-    echo $query;
     return mysqli_query($link, $query);
 }
 
